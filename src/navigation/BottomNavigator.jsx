@@ -3,6 +3,7 @@ import React from "react";
 import { Image } from "expo-image";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 const Tab = createBottomTabNavigator();
 import Home from "../../assets/svgs/home.svg";
@@ -15,8 +16,9 @@ const BottomNavigator = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          /* let Icon;
-          Icon =
+          let Icon = route.name.toLowerCase();
+
+          /*Icon =
             route.name === "Home"
               ? 
               : route.name === "Wallet"
@@ -31,24 +33,15 @@ const BottomNavigator = () => {
               color={focused ? "#0184fb" : "#7c879a"}
             />
           ); */
-          return (
-            <View
-              style={{
-                flex: 1,
-                flex: 1,
-                backgroundColor: "#fff",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Image
-                style={{
-                  flex: 1,
-                  width: "100%",
-                }}
-                source={require("../../assets/icon.png")}
-              />
-            </View>
+          return Icon == "Discovery" ? (
+            <Entypo name="globe" size={24} color="#7c879a" />
+          ) : (
+            <AntDesign
+              name={Icon}
+              width={24}
+              height={24}
+              fill={focused ? "#0184fb" : "#7c879a"}
+            />
           );
         },
         tabBarActiveTintColor: "#0184fb",
