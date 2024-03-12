@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
         <View>
           <Pressable
             className="bg-transparent"
-            onClick={() => {
+            onPress={() => {
               navigation.navigate("selectassett");
             }}
             title="Send"
