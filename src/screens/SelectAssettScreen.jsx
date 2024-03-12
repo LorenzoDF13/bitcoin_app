@@ -16,7 +16,7 @@ export default SelectAssettScreen = ({ navigation }) => {
       className="flex-1 text-white  px-4 "
       style={{ backgroundColor: "#16171C" }}
     >
-      <View className=" py-3 flex-row justify-between">
+      <View className=" pb-5 flex-row justify-between">
         <Pressable
           onPress={() => {
             navigation.goBack();
@@ -38,20 +38,20 @@ export default SelectAssettScreen = ({ navigation }) => {
           cursorColor={"#0184fb"}
         ></TextInput>
       </View>
-      <TouchableHighlight underlayColor="#16171C" activeOpacity={0.6}>
-        <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
+      <TouchableHighlight
+        onPress={() => navigation.navigate("selectsender")}
+        underlayColor="#16171C"
+        activeOpacity={0.6}
+      >
+        <View className="rounded-xl p-2 px-5  items-center flex-row w-full mb-3">
           <View className="flex-row">
-            <View className="mr-5">
+            <View className="mr-5 justify-center">
               <FontAwesome6 name="bitcoin" size={32} color="yellow" />
             </View>
-            <View className=" text-white">
+            <View className="">
               <Text className="text-lg text-white">BTC</Text>
               <Text style={{ color: "#96979B" }}>Bitcoin</Text>
             </View>
-          </View>
-          <View className=" ">
-            <Text className="text-lg text-white"></Text>
-            <Text style={{ color: "#96979B" }}></Text>
           </View>
         </View>
       </TouchableHighlight>

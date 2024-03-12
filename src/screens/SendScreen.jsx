@@ -1,101 +1,73 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { Feather } from "@expo/vector-icons";
-const SendScreen = ({ navigation }) => {
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Entypo } from "@expo/vector-icons";
+const SendScreen = () => {
   return (
-    <View
-      className="flex-1 text-white  px-4 "
+    <SafeAreaView
+      className="flex-1 justify-between text-white  px-4 "
       style={{ backgroundColor: "#16171C" }}
     >
-      <View className=" py-3 flex-row justify-between">
-        <Pressable
-          onPress={() => {
-            navigation.goBack();
-          }}
-        >
-          <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
-        </Pressable>
-        <Text className="text-white text-lg ">Select Asset</Text>
-        <Text>
-          <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
+      <View>
+        <View className=" pb-5 flex-row justify-between">
+          <Pressable
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
+          </Pressable>
+          <Text className="text-white text-lg ">Send</Text>
+          <Text>
+            <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
+          </Text>
+        </View>
+        <View className="p-10">
+          <Text className="text-white text-xl p-3 text-center w-full font-bold">
+            US$
+          </Text>
+          <View className="">
+            <FontAwesome6
+              name="bitcoin"
+              size={32}
+              color="yellow"
+              className="mr-5"
+            />
+            <Text
+              className=" text-lg text-center w-full font-bold"
+              style={{ color: "" }}
+            >
+              0 BTC
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View className="rounded-t-xl p-2" style={{ backgroundColor: "#22252E" }}>
+        <Text className="font-bold" style={{ color: "#6a707e" }}>
+          Send from:{" "}
         </Text>
+        <View>
+          <View className="justify-between">
+            <Text className="text-orange-500 rounded-full mr-2">.</Text>
+            <Text className="font-bold text-white" style={{ color: "#6a707e" }}>
+              My BTC wallet{" "}
+            </Text>
+          </View>
+          <View>
+            <View>
+              <Text
+                className="font-bold text-white"
+                style={{ color: "#6a707e" }}
+              >
+                US$2.000.31
+                <Feather name="chevron-right" size={20} color="#0184fb" />
+              </Text>
+            </View>
+            {/*[0,1,2,3,4,5,6,7,8,9].map((item) => */}
+          </View>
+        </View>
       </View>
-      <Text>SendScreen</Text>
-      <View className="pb-1">
-        <TextInput
-          className="rounded-xl"
-          style={{ backgroundColor: "#242831", color: "#96979B", padding: 10 }}
-          placeholder="bitcoin address"
-          placeholderTextColor={"#96979B"}
-          cursorColor={"#0184fb"}
-        ></TextInput>
-        <Text>Who can I send to?</Text>
-      </View>
-      <TouchableHighlight underlayColor="#16171C" activeOpacity={0.6}>
-        <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
-          <View className="flex-row">
-            <View className="mr-5">
-              <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-            </View>
-            <View className=" text-white">
-              <Text className="text-lg text-white">BTC</Text>
-              <Text style={{ color: "#96979B" }}>Bitcoin</Text>
-            </View>
-          </View>
-          <View className=" ">
-            <Feather name="chevron-right" size={24} color="#" />
-          </View>
-        </View>
-      </TouchableHighlight>
-      <TouchableHighlight underlayColor="#16171C" activeOpacity={0.6}>
-        <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
-          <View className="flex-row">
-            <View className="mr-5">
-              <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-            </View>
-            <View className=" text-white">
-              <Text className="text-lg text-white">Scan a QR code</Text>
-            </View>
-          </View>
-          <View className=" ">
-            <Text className="text-lg text-white"></Text>
-            <Text style={{ color: "#96979B" }}></Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-      <TouchableHighlight underlayColor="#16171C" activeOpacity={0.6}>
-        <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
-          <View className="flex-row">
-            <View className="mr-5">
-              <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-            </View>
-            <View className=" text-white">
-              <Text className="text-lg text-white">My Wallets</Text>
-            </View>
-          </View>
-          <View className=" ">
-            <Text className="text-lg text-white"></Text>
-            <Text style={{ color: "#96979B" }}></Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-      <TouchableHighlight underlayColor="#16171C" activeOpacity={0.6}>
-        <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
-          <View className="flex-row">
-            <View className="mr-5">
-              <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-            </View>
-            <View className=" text-white">
-              <Text className="text-lg text-white">Sharable links</Text>
-            </View>
-          </View>
-          <View className=" ">
-            <Text className="text-lg text-white"></Text>
-            <Text style={{ color: "#96979B" }}></Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -55,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
         className="flex-row justify-around rounded-xl p-3 "
         style={{ backgroundColor: "#242831" }}
       >
-        <View className="items-center justify-center gap-2 ">
+        <View className="items-center justify-center  gap-2 ">
           <Pressable
             className="bg-transparent"
             onPress={() => {
