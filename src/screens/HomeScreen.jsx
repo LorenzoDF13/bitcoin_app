@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import React, { useEffect, useState } from "react";
@@ -6,7 +6,7 @@ import BitcoinGraph from "../components/bitcoinGraph";
 // import BottomNavigator from "../navigation/BottomNavigator";
 import exampleImage from "../../assets/home.jpg";
 const img = require("../../assets/icon.png");
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [bitcoinData, setBitcoinData] = useState(null);
   console.log("Home " + bitcoinData);
   useEffect(() => {
@@ -55,7 +55,15 @@ const HomeScreen = () => {
         style={{ backgroundColor: "#242831" }}
       >
         <View>
-          <Text className="text-white">Send</Text>
+          <Pressable
+            className="bg-transparent"
+            onClick={() => {
+              navigation.navigate("selectassett");
+            }}
+            title="Send"
+          >
+            <Text className="text-white">Send</Text>
+          </Pressable>
         </View>
         <View>
           <Text className="text-white">Recive</Text>
