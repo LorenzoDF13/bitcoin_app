@@ -1,9 +1,10 @@
 import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { FontAwesome6 } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import BitcoinGraph from "../components/bitcoinGraph";
+import Asset from "../components/Asset";
 // import BottomNavigator from "../navigation/BottomNavigator";
 
 const HomeScreen = ({ navigation }) => {
@@ -54,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
         className="flex-row justify-around rounded-xl p-3 "
         style={{ backgroundColor: "#242831" }}
       >
-        <View>
+        <View className="items-center justify-center gap-2 ">
           <Pressable
             className="bg-transparent"
             onPress={() => {
@@ -62,23 +63,38 @@ const HomeScreen = ({ navigation }) => {
             }}
             title="Send"
           >
-            <Feather name="send" size={24} color="#0184fb" />
+            <Feather name="send" size={20} color="#0184fb" />
             <Text className="text-white">Send</Text>
           </Pressable>
         </View>
-        <View>
-          <Feather name="download" size={24} color="#0184fb" />
+        <View className="items-center">
+          <Feather name="download" size={20} color="#0184fb" />
           <Text className="text-white">Recive</Text>
         </View>
-        <View>
-          <Feather name="shopping-cart" size={24} color="#0184fb" />
+        <View className="items-center">
+          <Feather name="shopping-cart" size={20} color="#0184fb" />
           <Text className="text-white">Buy</Text>
         </View>
-        <View>
-          <Feather name="repeat" size={24} color="#0184fb" />
+        <View className="items-center">
+          <Feather name="repeat" size={20} color="#0184fb" />
           <Text className="text-white">Swap</Text>
         </View>
       </View>
+      <Text className="text-white py-3"> My Assets</Text>
+      <Asset
+        icon={<FontAwesome6 name="bitcoin" size={32} color="yellow" />}
+        text="BTC"
+        subtext={"0.00032"}
+        usd="2000.00"
+        change={bitcoinData?.percent_change_24h + "%"}
+      ></Asset>
+      <Asset
+        icon={<FontAwesome6 name="bitcoin" size={32} color="yellow" />}
+        text="Verse"
+        subtext={"0 verse"}
+        usd="0.00"
+        change={"0.00%"}
+      ></Asset>
     </SafeAreaView>
   );
 };
