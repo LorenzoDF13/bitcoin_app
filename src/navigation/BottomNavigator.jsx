@@ -10,6 +10,7 @@ import Home from "../../assets/svgs/home.svg";
 import Wallett from "../../assets/svgs/wallett.svg";
 import Discovery from "../../assets/svgs/discovery.svg";
 import Settings from "../../assets/svgs/settings.svg";
+import { SafeAreaView } from "react-native-safe-area-context";
 const BottomNavigator = () => {
   console.log("ok");
   return (
@@ -17,30 +18,35 @@ const BottomNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let Icon = route.name.toLowerCase();
+          if (Icon == "founds") {
+            Icon = "wallet";
+          }
+          if (Icon == "settings") {
+            Icon = "setting";
+          }
 
           /*Icon =
-            route.name === "Home"
-              ? 
-              : route.name === "Wallet"
+          route.name === "Home"
+          ? 
+          : route.name === "Wallet"
               ? Wallett
               : route.name === "Discovery"
               ? Discovery
               : Settings; */
           /*   return (
-            <AntDesign
+                <AntDesign
               name={route.name.toLowerCase()}
               size={24}
               color={focused ? "#0184fb" : "#7c879a"}
-            />
-          ); */
-          return Icon == "Discovery" ? (
+              />
+              ); */
+          return Icon == "discovery" ? (
             <Entypo name="globe" size={24} color="#7c879a" />
           ) : (
             <AntDesign
               name={Icon}
-              width={24}
-              height={24}
-              fill={focused ? "#0184fb" : "#7c879a"}
+              size={24}
+              color={focused ? "#0184fb" : "#7c879a"}
             />
           );
         },
@@ -48,7 +54,6 @@ const BottomNavigator = () => {
         tabBarInactiveTintColor: "#7c879a",
         tabBarLabelStyle: {
           fontSize: 14,
-          padding: 4,
         },
 
         tabBarStyle: {

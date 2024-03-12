@@ -1,11 +1,11 @@
 import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image } from "expo-image";
+
+import { Feather } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import BitcoinGraph from "../components/bitcoinGraph";
 // import BottomNavigator from "../navigation/BottomNavigator";
-import exampleImage from "../../assets/home.jpg";
-const img = require("../../assets/icon.png");
+
 const HomeScreen = ({ navigation }) => {
   const [bitcoinData, setBitcoinData] = useState(null);
   console.log("Home " + bitcoinData);
@@ -62,39 +62,22 @@ const HomeScreen = ({ navigation }) => {
             }}
             title="Send"
           >
+            <Feather name="send" size={24} color="#0184fb" />
             <Text className="text-white">Send</Text>
           </Pressable>
         </View>
         <View>
+          <Feather name="download" size={24} color="#0184fb" />
           <Text className="text-white">Recive</Text>
         </View>
         <View>
+          <Feather name="shopping-cart" size={24} color="#0184fb" />
           <Text className="text-white">Buy</Text>
         </View>
         <View>
+          <Feather name="repeat" size={24} color="#0184fb" />
           <Text className="text-white">Swap</Text>
         </View>
-      </View>
-      <View className="py-3 text-lg text-white">
-        <Image
-          source="https://picsum.photos/seed/696/3000/2000"
-          className="flex-1 w-full h-9"
-        />
-        <Text className="text-lg text-white">My assetts</Text>
-      </View>
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <Image
-          style={{
-            flex: 1,
-            width: "100%",
-            backgroundColor: "#0553",
-          }}
-          source={require("../../assets/home.jpg")}
-        />
       </View>
     </SafeAreaView>
   );
