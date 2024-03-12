@@ -24,7 +24,7 @@ const HomeScreen = ({ navigation }) => {
         Total Portfolio
       </Text>
       <View className="justify-between pb-3 flex-row">
-        <Text className="text-4xl text-white">US$2.000.31</Text>
+        <Text className="text-4xl text-white font-bold">US$2.000.31</Text>
         <View className="flex-row">
           <Text className="text-3xl">svg</Text>
           <Text className="text-lg">svg</Text>
