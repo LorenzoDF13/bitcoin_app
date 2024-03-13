@@ -118,7 +118,7 @@ const SelectSenderScreen = ({ navigation }) => {
       ) : (
         <TouchableHighlight
           underlayColor="#16171C"
-          onPress={() => navigation.navigate("sendscreen")}
+          onPress={() => navigation.navigate("send")}
         >
           <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
             <View className="flex-row items-center">

@@ -9,7 +9,11 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        gestureDirection: "horizontal",
+      }}
+    >
       <Stack.Screen
         name="HomeScreen"
         component={BottomNavigator}
