@@ -10,7 +10,7 @@ import { Feather } from "@expo/vector-icons";
 import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
-const SelectSenderScreen = ({ navigation }) => {
+const SelectSenderScreen = ({ navigation, route }) => {
   const [text, onChangeText] = React.useState("");
   console.log(text.length);
   return (

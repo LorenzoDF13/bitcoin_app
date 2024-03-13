@@ -10,7 +10,7 @@ import React, { Component } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import Asset from "../components/Asset";
-export default SelectAssettScreen = ({ navigation }) => {
+export default SelectAssettScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView
       className="flex-1 text-white  px-4 "
@@ -39,7 +39,9 @@ export default SelectAssettScreen = ({ navigation }) => {
         ></TextInput>
       </View>
       <TouchableHighlight
-        onPress={() => navigation.navigate("selectsender")}
+        onPress={() =>
+          navigation.navigate("selectsender", route.params.btcPrice)
+        }
         underlayColor="#16171C"
         activeOpacity={0.6}
       >

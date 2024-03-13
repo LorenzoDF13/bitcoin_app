@@ -3,17 +3,24 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import BitcoinGraph from "../components/bitcoinGraph";
+import BitcoinGraph from "../components/BitcoinGraph";
 import Asset from "../components/Asset";
 // import BottomNavigator from "../navigation/BottomNavigator";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useBitcoinStore } from "../stores/BitcoinStore";
 
 const HomeScreen = ({ navigation }) => {
+  const { usd, setBtcPrice } = useBitcoinStore();
   const [bitcoinData, setBitcoinData] = useState(null);
   console.log("Home " + bitcoinData);
   useEffect(() => {
     fetch("https://api.coinlore.net/api/ticker/?id=90")
       .then((response) => response.json())
-      .then((data) => setBitcoinData(data[0]));
+      .then((data) => {
+        setBitcoinData(data[0]);
+        setBtcPrice(data[0].price_usd);
+      });
   }, []);
   return (
     <SafeAreaView
@@ -24,10 +31,30 @@ const HomeScreen = ({ navigation }) => {
         Total Portfolio
       </Text>
       <View className="justify-between pb-3 flex-row">
-        <Text className="text-4xl text-white font-bold">US$2.000.31</Text>
+        <Text className="text-4xl text-white font-bold">US${usd}</Text>
         <View className="flex-row">
-          <Text className="text-3xl">svg</Text>
-          <Text className="text-lg">svg</Text>
+          <View
+            className="p-2 mr-2  rounded-xl justify-center items-center"
+            style={{ backgroundColor: "#242831" }}
+          >
+            <MaterialCommunityIcons
+              name="qrcode-scan"
+              size={20}
+              className=""
+              color="#0184fb"
+            />
+          </View>
+          <View
+            className="p-2  rounded-xl justify-center items-center"
+            style={{ backgroundColor: "#0184fb" }}
+          >
+            <MaterialCommunityIcons
+              name="qrcode-scan"
+              size={20}
+              className=""
+              color="#0184fb"
+            />
+          </View>
         </View>
       </View>
       <View className="gap-4 flex-row items-center">
@@ -39,12 +66,13 @@ const HomeScreen = ({ navigation }) => {
         >
           {bitcoinData?.percent_change_24h}%
         </Text>
-        <View>
-          <Text
-            className="p-1 px-2 rounded-xl"
-            style={{ backgroundColor: "#242831", color: "#919296" }}
-          >
-            24H
+        <View
+          style={{ backgroundColor: "#242831" }}
+          className="p-1 px-2 rounded-xl flex-row"
+        >
+          <MaterialIcons name="currency-exchange" size={16} color="#359BD7" />
+          <Text style={{ color: "#919296" }} className="pl-1">
+            1M
           </Text>
         </View>
       </View>
@@ -59,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
           <Pressable
             className="bg-transparent"
             onPress={() => {
-              navigation.navigate("selectassett");
+              navigation.navigate("selectassett", {});
             }}
             title="Send"
           >

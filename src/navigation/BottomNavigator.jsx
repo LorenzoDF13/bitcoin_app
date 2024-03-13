@@ -11,6 +11,7 @@ import Wallett from "../../assets/svgs/wallett.svg";
 import Discovery from "../../assets/svgs/discovery.svg";
 import Settings from "../../assets/svgs/settings.svg";
 import { SafeAreaView } from "react-native-safe-area-context";
+import FoundsScreen from "../screens/FoundsScreen";
 const BottomNavigator = () => {
   console.log("ok");
   return (
@@ -68,8 +69,16 @@ const BottomNavigator = () => {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Founds" component={HomeScreen} />
-      <Tab.Screen name="Discovery" component={HomeScreen} />
+      <Tab.Screen
+        name="Founds"
+        component={FoundsScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Discovery"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Settings" component={HomeScreen} />
     </Tab.Navigator>
   );

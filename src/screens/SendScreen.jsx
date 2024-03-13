@@ -1,5 +1,5 @@
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Entypo,
@@ -7,8 +7,11 @@ import {
   FontAwesome6,
   Feather,
 } from "@expo/vector-icons";
-const SendScreen = () => {
+import { useBitcoinStore } from "../stores/BitcoinStore";
+const SendScreen = ({ route }) => {
+  const { usd, btcPrice } = useBitcoinStore();
   const [value, setValue] = React.useState("");
+
   return (
     <SafeAreaView
       className="flex-1 justify-between text-white   "
@@ -28,23 +31,32 @@ const SendScreen = () => {
             <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
           </Text>
         </View>
-        <View className="p-10">
-          <Text className="text-white text-xl p-3 text-center w-full font-bold">
-            US$ {value}
-          </Text>
-          <View className="">
-            <FontAwesome6
-              name="bitcoin"
-              size={32}
-              color="yellow"
-              className="mr-5"
-            />
-            <Text
-              className=" text-lg text-center w-full font-bold"
-              style={{ color: "" }}
-            >
-              0 BTC
+        <View className="pt-10 ">
+          <View>
+            <Text className="text-white text-4xl p-3 text-center w-full ">
+              US$ {value}
             </Text>
+            <View className=" justify-center flex-row mb-14">
+              <FontAwesome6 name="bitcoin" size={24} color="yellow" />
+              <Text
+                className="ml-3 text-base text-center  "
+                style={{ color: "#989cA6" }}
+              >
+                {(parseFloat(value) / btcPrice).toFixed(10)} BTC
+              </Text>
+            </View>
+          </View>
+          <View className="  flex-row self-start pl-0 p-2">
+            <View
+              className="rounded-full justify-center items-center p-3 mr-2"
+              style={{ backgroundColor: "#0D3247" }}
+            >
+              <FontAwesome6 name="truck-fast" size={20} color="#0184fb" />
+            </View>
+            <View>
+              <Text className="text-white">Network Fees</Text>
+              <Text className="text-white">Fast</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -73,11 +85,8 @@ const SendScreen = () => {
           </View>
           <View>
             <View>
-              <Text
-                className="font-bold text-white"
-                style={{ color: "#6a707e" }}
-              >
-                US$2.000.31
+              <Text className="font-bold text-white">
+                US$ {usd}
                 <Feather name="chevron-right" size={20} color="#0184fb" />
               </Text>
             </View>
@@ -88,10 +97,10 @@ const SendScreen = () => {
             (item) => (
               <TouchableOpacity
                 key={item}
-                style={{ height: 90, width: 100 }}
+                style={{ height: 75, width: 100 }}
                 onPress={() => {
                   if (item != "x") setValue((value) => value + item);
-                  if (item == ".") setValue((value) => value + item);
+
                   if (item == "x") setValue((value) => value.slice(0, -1));
                 }}
                 className="justify-center items-center"
