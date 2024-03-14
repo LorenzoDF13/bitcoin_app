@@ -23,7 +23,7 @@ const BitcoinGraph = () => {
           max: data ? Math.max(...data.map((d) => d.x)) : 1,
         }}
         yDomain={{
-          min: data ? Math.min(...data.map((d) => d.y)) : 0,
+          min: data ? Math.min(...data.map((d) => d.y)) - 1000 : 0,
           max: data ? Math.max(...data.map((d) => d.y)) : 1,
         }}
       >

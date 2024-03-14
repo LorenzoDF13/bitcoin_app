@@ -11,7 +11,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
 
 const HomeScreen = ({ navigation }) => {
-  const { usd, setBtcPrice } = useBitcoinStore();
+  const { usd, setBtcPrice, setLast24hChange } = useBitcoinStore();
   const [bitcoinData, setBitcoinData] = useState(null);
   console.log("Home " + bitcoinData);
   useEffect(() => {
@@ -20,6 +20,7 @@ const HomeScreen = ({ navigation }) => {
       .then((data) => {
         setBitcoinData(data[0]);
         setBtcPrice(data[0].price_usd);
+        setLast24hChange(data[0].percent_change_24h);
       });
   }, []);
   return (

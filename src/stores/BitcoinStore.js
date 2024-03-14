@@ -8,10 +8,11 @@ export const useBitcoinStore = create(
     (set, get) => ({
       usd: "2.000",
       bitcoin: 0,
-
+      last_24h_change: 0,
       btcPrice: "0",
       setBtcPrice: (btcPrice) => set({ btcPrice }),
       setUsd: (usd) => set({ usd }),
+      setLast24hChange: (last_24h_change) => set({ last_24h_change }),
       setBitcoin: (bitcoin) => set({ bitcoin }),
     }),
     {
