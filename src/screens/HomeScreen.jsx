@@ -62,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
         <Text
           className="pr-1 "
           style={{
-            color: bitcoinData?.percent_change_24h > 0 ? "#05BD88" : "red",
+            color: bitcoinData?.percent_change_24h > 0 ? "#05BD88" : "#E23F2E",
           }}
         >
           {bitcoinData?.percent_change_24h}%

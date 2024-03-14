@@ -5,6 +5,7 @@ import BottomNavigator from "./BottomNavigator";
 import SelectSenderScreen from "../screens/SelectSenderScreen";
 import SendScreen from "../screens/SendScreen";
 import BitcoinWalletScreen from "../screens/BitcoinWalletScreen";
+import MovmentScreen from "../screens/MovmentScreen";
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,11 @@ function MyStack() {
       <Stack.Screen
         name="btcwallet"
         component={BitcoinWalletScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="movment"
+        component={MovmentScreen}
         options={{ headerShown: false }}
       />
       {/*  <Stack.Screen name="Notifications" component={Notifications} />

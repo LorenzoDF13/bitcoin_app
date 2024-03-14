@@ -1,10 +1,16 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TouchableHighlight } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FontAwesome5, Feather, Entypo } from "@expo/vector-icons";
+import {
+  FontAwesome5,
+  FontAwesome6,
+  Feather,
+  Entypo,
+} from "@expo/vector-icons";
 import { useTransactionStore } from "../stores/TransactionStore";
 import { useBitcoinStore } from "../stores/BitcoinStore";
-const BitcoinWalletScreen = () => {
+import { format } from "date-fns";
+const BitcoinWalletScreen = ({ navigation }) => {
   const monthNames = [
     "January",
     "February",
@@ -48,7 +54,7 @@ const BitcoinWalletScreen = () => {
           <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
         </Text>
       </View>
-      <View className="justify-center  py-3 pt-6 ">
+      <View className="justify-center  py-6 ">
         <Text className="text-4xl text-white text-center  font-bold">
           US${usd}
         </Text>
@@ -56,10 +62,10 @@ const BitcoinWalletScreen = () => {
           <Text
             className="pr-1 font-bold"
             style={{
-              color: last_24h_change > 0 ? "#05BD88" : "red",
+              color: last_24h_change > 0 ? "#05BD88" : "#E23F2E",
             }}
           >
-            {last_24h_change} last 24h change
+            {last_24h_change}% last 24h change
           </Text>
         </View>
       </View>
@@ -104,10 +110,51 @@ const BitcoinWalletScreen = () => {
         </Text>
         {transactions.map((transaction) => {
           return (
-            <View>
-              <Text>{transaction.type}</Text>
-              <Text> {transaction.amount}</Text>
-            </View>
+            <TouchableHighlight
+              key={transaction.date}
+              onPress={() => {
+                navigation.navigate("movment", transaction);
+              }}
+            >
+              <View className="flex-row justify-between border-b border-black p-3">
+                <View id="icon-Received" className="flex-row items-center">
+                  {transaction.type == "Received" ? (
+                    <View>
+                      <FontAwesome6 name="bitcoin" size={32} color="yellow" />
+                      <View></View>
+                    </View>
+                  ) : (
+                    <View>
+                      <FontAwesome6 name="bitcoin" size={32} color="red" />
+                      <View></View>
+                    </View>
+                  )}
+                  <View className="ml-3">
+                    <Text className="text-white">{transaction.type}</Text>
+                    <Text style={{ color: "#96979B" }}>
+                      {format(
+                        new Date(transaction.date * 1000),
+                        "d MMM y H:mm"
+                      )}
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      color:
+                        transaction.type == "Received" ? "#05BD88" : "#E23F2E",
+                    }}
+                  >
+                    {transaction.type == "Received" ? "+" : "-"} US$
+                    {transaction.amountUsd}
+                  </Text>
+                  <Text style={{ color: "#96979B" }}>
+                    {(transaction.amountUsd / btcPrice).toFixed(8)} BTC
+                  </Text>
+                </View>
+              </View>
+            </TouchableHighlight>
           );
         })}
       </View>

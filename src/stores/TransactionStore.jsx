@@ -6,7 +6,14 @@ import { createJSONStorage, persist } from "zustand/middleware";
 export const useTransactionStore = create(
   persist(
     (set, get) => ({
-      transactions: [],
+      transactions: [
+        {
+          amountUsd: 10,
+          date: "1710424794",
+          receiver: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+          type: "Received",
+        },
+      ],
       addTransaction: (transaction) =>
         set(() => ({ transactions: [...get().transactions, transaction] })),
     }),
