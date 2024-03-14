@@ -8,7 +8,7 @@ import {
   Feather,
 } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
-const SendScreen = ({ route }) => {
+const SendScreen = ({ route, navigation }) => {
   const { usd, btcPrice } = useBitcoinStore();
   const [value, setValue] = React.useState("");
 
@@ -111,10 +111,19 @@ const SendScreen = ({ route }) => {
           )}
         </View>
         <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("confirm", {
+              amountUsd: value,
+              receiver: route.params.receiver,
+            })
+          }
           className=" rounded-xl justify-center items-center mx-8 mb-4 my-3 px-4 py-2"
-          style={{ backgroundColor: "#323844" }}
+          style={{ backgroundColor: value == 0 ? "#323844" : "#3ea9ef" }}
         >
-          <Text className="text-lg text-white" style={{ color: "#e7e8ea" }}>
+          <Text
+            className="text-lg text-white"
+            style={{ color: value == 0 ? "#e7e8ea" : "white" }}
+          >
             CONTINUE
           </Text>
         </TouchableOpacity>

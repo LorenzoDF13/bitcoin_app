@@ -6,6 +6,7 @@ import SelectSenderScreen from "../screens/SelectSenderScreen";
 import SendScreen from "../screens/SendScreen";
 import BitcoinWalletScreen from "../screens/BitcoinWalletScreen";
 import MovmentScreen from "../screens/MovmentScreen";
+import ConfirmationScreen from "../screens/ConfirmationScreen";
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,7 @@ function MyStack() {
       }}
     >
       <Stack.Screen
-        name="HomeScreen"
+        name="Home"
         component={BottomNavigator}
         options={{ headerShown: false }}
       />
@@ -44,6 +45,11 @@ function MyStack() {
       <Stack.Screen
         name="movment"
         component={MovmentScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="confirm"
+        component={ConfirmationScreen}
         options={{ headerShown: false }}
       />
       {/*  <Stack.Screen name="Notifications" component={Notifications} />

@@ -9,7 +9,7 @@ import Asset from "../components/Asset";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
-
+import Verce from "../../assets/svgs/verce.svg";
 const HomeScreen = ({ navigation }) => {
   const { usd, setBtcPrice, setLast24hChange } = useBitcoinStore();
   const [bitcoinData, setBitcoinData] = useState(null);
@@ -49,12 +49,7 @@ const HomeScreen = ({ navigation }) => {
             className="p-2  rounded-xl justify-center items-center"
             style={{ backgroundColor: "#0184fb" }}
           >
-            <MaterialCommunityIcons
-              name="qrcode-scan"
-              size={20}
-              className=""
-              color="#0184fb"
-            />
+            <Verce width={20} height={20} />
           </View>
         </View>
       </View>
@@ -118,7 +113,7 @@ const HomeScreen = ({ navigation }) => {
         change={bitcoinData?.percent_change_24h + "%"}
       ></Asset>
       <Asset
-        icon={<FontAwesome6 name="bitcoin" size={32} color="yellow" />}
+        icon={<Verce width={32} height={32} />}
         text="Verse"
         subtext={"0 verse"}
         usd="0.00"

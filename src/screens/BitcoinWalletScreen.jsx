@@ -111,6 +111,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
         {transactions.map((transaction) => {
           return (
             <TouchableHighlight
+              underlayColor="#16171C"
               key={transaction.date}
               onPress={() => {
                 navigation.navigate("movment", transaction);
@@ -119,14 +120,14 @@ const BitcoinWalletScreen = ({ navigation }) => {
               <View className="flex-row justify-between border-b border-black p-3">
                 <View id="icon-Received" className="flex-row items-center">
                   {transaction.type == "Received" ? (
-                    <View>
-                      <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-                      <View></View>
+                    <View className="text-white rounded-full ">
+                      <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
+                      <FontAwesome6 name="bitcoin" size={24} color="#f0A10F" />
                     </View>
                   ) : (
-                    <View>
-                      <FontAwesome6 name="bitcoin" size={32} color="red" />
-                      <View></View>
+                    <View className="text-white rounded-full ">
+                      <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
+                      <FontAwesome6 name="bitcoin" size={24} color="red" />
                     </View>
                   )}
                   <View className="ml-3">
