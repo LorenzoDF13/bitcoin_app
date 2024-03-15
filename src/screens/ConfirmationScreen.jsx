@@ -16,7 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import ConfirmedModal from "../components/ConfirmedModal";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
-import AwesomeLoading from "react-native-awesome-loading";
+import Loader from "react-native-three-dots-loader";
 import currencyFormat from "../utils/CurrencyFormat";
 const ConfirmationScreen = ({ navigation, route }) => {
   const { btcPrice } = useBitcoinStore();
@@ -146,7 +146,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
             }}
           />
         ) : (
-          <AwesomeLoading indicatorId={8} size={50} isActive={true} text="" />
+          <Loader background={"#6B707D"} activeBackground={"#0184fb"} />
         )}
         <Text className="w-3/4 pt-2" style={{ color: "#6B707D" }}>
           Transaction are non-reversible. Plese ensure all information is
