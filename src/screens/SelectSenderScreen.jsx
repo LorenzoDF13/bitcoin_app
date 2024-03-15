@@ -4,6 +4,7 @@ import {
   Pressable,
   TextInput,
   TouchableHighlight,
+  TouchableNativeFeedback,
 } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
@@ -98,7 +99,7 @@ const SelectSenderScreen = ({ navigation, route }) => {
                 </View>
               </View>
               <View className=" ">
-                <Feather name="chevron-right" size={20} color="#0184fb" />
+                <Feather name="chevron-right" size={20} color="#103964" />
               </View>
             </View>
           </TouchableHighlight>
@@ -116,8 +117,8 @@ const SelectSenderScreen = ({ navigation, route }) => {
           </TouchableHighlight>
         </>
       ) : (
-        <TouchableHighlight
-          underlayColor="#16171C"
+        <TouchableNativeFeedback
+          className="rounded-full"
           onPress={() => navigation.navigate("send", { receiver: text })}
         >
           <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
@@ -135,7 +136,7 @@ const SelectSenderScreen = ({ navigation, route }) => {
               <Feather name="chevron-right" size={20} color="#0184fb" />
             </View>
           </View>
-        </TouchableHighlight>
+        </TouchableNativeFeedback>
       )}
     </SafeAreaView>
   );

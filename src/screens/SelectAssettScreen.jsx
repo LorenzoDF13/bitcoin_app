@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import Asset from "../components/Asset";
-export default SelectAssettScreen = ({ navigation, route }) => {
+export default SelectAssettScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView
       className="flex-1 text-white  px-4 "
@@ -41,9 +41,7 @@ export default SelectAssettScreen = ({ navigation, route }) => {
         ></TextInput>
       </View>
       <TouchableNativeFeedback
-        onPress={() =>
-          navigation.navigate("selectsender", route.params.btcPrice)
-        }
+        onPress={() => navigation.navigate("selectsender")}
         underlayColor={"#50535A"}
         className="rounded-xl "
       >

@@ -11,7 +11,9 @@ import { useBitcoinStore } from "../stores/BitcoinStore";
 import currencyFormat from "../utils/CurrencyFormat";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
+import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
 const SendScreen = ({ route, navigation }) => {
   const { usd, btcPrice } = useBitcoinStore();
   const [value, setValue] = React.useState("");
@@ -30,16 +32,32 @@ const SendScreen = ({ route, navigation }) => {
           >
             <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
           </Pressable>
-          <Text className="text-white text-lg ">Send</Text>
+          <Text className="text-white text-lg ">{route.params.receiver}</Text>
           <Text>
             <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
           </Text>
         </View>
         <View className="pt-10 ">
-          <View>
-            <Text className="text-white text-4xl p-3 text-center w-full ">
-              {currencyFormat(value)}
-            </Text>
+          <View className="">
+            <View className="flex-row justify-between">
+              <MaterialIcons
+                className="text-right"
+                name="swap-calls"
+                size={24}
+                color="#16171C"
+              />
+              <Text className="text-white text-4xl p-3 text-center">
+                {currencyFormat(value)}
+              </Text>
+              <View className="justify-center">
+                <MaterialIcons
+                  className="text-right "
+                  name="swap-calls"
+                  size={32}
+                  color="#0184fb"
+                />
+              </View>
+            </View>
             <View className=" justify-center flex-row mb-14">
               <Bitcoin width={24} height={24} />
               <Text
@@ -97,7 +115,7 @@ const SendScreen = ({ route, navigation }) => {
           </View>
         </View>
         <View className="flex-wrap flex-row justify-center">
-          {["0", "1", "2", "3", "4", "5", "6", "7", "8", ".", "9", "x"].map(
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "x"].map(
             (item) => (
               <TouchableHighlight
                 key={item}
@@ -110,7 +128,17 @@ const SendScreen = ({ route, navigation }) => {
                 }}
                 className="justify-center  items-center"
               >
-                <Text className="text-white  text-3xl">{item}</Text>
+                <Text className="text-white  text-3xl">
+                  {item != "x" ? (
+                    item
+                  ) : (
+                    <FontAwesome6
+                      name="delete-left"
+                      size={24}
+                      color="#c9ccd8"
+                    />
+                  )}
+                </Text>
               </TouchableHighlight>
             )
           )}

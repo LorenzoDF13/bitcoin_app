@@ -16,13 +16,16 @@ import { Ionicons } from "@expo/vector-icons";
 import ConfirmedModal from "../components/ConfirmedModal";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
+import AwesomeLoading from "react-native-awesome-loading";
+import currencyFormat from "../utils/CurrencyFormat";
 const ConfirmationScreen = ({ navigation, route }) => {
   const { btcPrice } = useBitcoinStore();
   const [sliderState, setSliderState] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <SafeAreaView
-      className="flex-1 text-white  px-4 "
+      className="flex-1   px-4 "
       style={{ backgroundColor: "#16171C" }}
     >
       <View className=" pb-5 flex-row justify-between">
@@ -41,7 +44,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
 
       <View className="pb-4 border-b border-b-white">
         <Text
-          className=" py-2 font-bold text-lg w-full "
+          className=" py-2 font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           Sending:
@@ -56,86 +59,95 @@ const ConfirmationScreen = ({ navigation, route }) => {
       </View>
       <View className="pb-4 border-b border-b-white">
         <Text
-          className=" py-2 font-bold text-lg w-full "
+          className=" py-2 font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           From:
         </Text>
         <View className=" flex-row">
           <Text
-            className="text-orange-500 text-base   rounded-full mr-2"
+            style={{ color: "#F7931A" }}
+            className=" text-base   rounded-full mr-2"
             /* style={{ backgroundColor: "rgb(249 115 22)" }} */
           >
             {"\u2B24"}
           </Text>
-          <Text className="font-bold text-lg text-white">My BTC wallet </Text>
+          <Text className=" text-base text-white">My BTC wallet </Text>
         </View>
       </View>
       <View className="pb-4 border-b border-b-white">
-        <Text
-          className=" py-2 font-bold text-lg w-full "
-          style={{ color: "#6b717E" }}
-        >
+        <Text className=" py-2 font-bold  w-full " style={{ color: "#6b717E" }}>
           BTC Network fee:
         </Text>
         <View className=" flex-row">
-          <Text className="font-bold text-lg text-white">$5.23</Text>
+          <Text className="font-bold text-base text-white">
+            $5.23 = {usdToBtc(5.23, btcPrice, 10)}
+          </Text>
         </View>
       </View>
       <View className="pb-6 border-b border-b-white">
         <Text
-          className=" py-2 font-bold text-lg w-full "
+          className=" py-1 pt-4 font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           They will recive:
         </Text>
         <View className="">
           <Text className="font-bold text-4xl py-1 text-white">
-            US${route.params.amountUsd}
+            {currencyFormat(route.params.amountUsd)}
           </Text>
           <Text
-            className="font-bold text-lg py-1 "
+            className="font-bold text-base py-1 "
             style={{ color: "#96979B" }}
           >
-            {usdToBtc(route.params.amountUsd, btcPrice, 8)}
+            {usdToBtc(route.params.amountUsd, btcPrice, 10)}
           </Text>
         </View>
       </View>
       <View className="mt-auto  justify-center items-center ">
-        <SlideToConfirm
-          unconfimredTipText={"SLIDE TO SEND  "}
-          unconfirmedTipTextStyle={{
-            color: "white",
-            fontSize: 18,
-            borderRadius: 50,
-          }}
-          confirmedTipText={"Confirmed"}
-          confirmedTipTextStyle={{
-            color: "white",
-            fontSize: 18,
-          }}
-          state={sliderState}
-          sliderButtonComponent={
-            <View
-              className="rounded-full  justify-center items-center m-1"
-              style={{ backgroundColor: "#0184fb", width: 50, height: 50 }}
-            >
-              <Ionicons name="send" size={24} color="white" />
-            </View>
-          }
-          onSlideConfirmed={() => {
-            setSliderState(true);
-            setIsVisible(true);
-          }}
-          sliderStyle={{
-            justifyContent: "center",
-            width: 280,
-            height: 70,
-            borderRadius: 50,
-            overflow: "hidden",
-            backgroundColor: "#242831",
-          }}
-        />
+        {!isLoading ? (
+          <SlideToConfirm
+            unconfimredTipText={"SLIDE TO SEND"}
+            unconfirmedTipTextStyle={{
+              color: "white",
+              fontSize: 18,
+              fontWeight: 700,
+              borderRadius: 50,
+            }}
+            confirmedTipText={"SENDING"}
+            confirmedTipTextStyle={{
+              color: "white",
+              fontSize: 18,
+            }}
+            state={sliderState}
+            sliderButtonComponent={
+              <View
+                className="rounded-full  justify-center items-center m-1"
+                style={{ backgroundColor: "#0184fb", width: 50, height: 50 }}
+              >
+                <Ionicons name="send" size={24} color="white" />
+              </View>
+            }
+            onSlideConfirmed={() => {
+              setSliderState(true);
+              setIsLoading(true);
+              setTimeout(() => {
+                setIsLoading(false);
+                setIsVisible(true);
+              }, 2000);
+            }}
+            sliderStyle={{
+              justifyContent: "center",
+              width: 280,
+              height: 70,
+              borderRadius: 50,
+              overflow: "hidden",
+              backgroundColor: "#242831",
+            }}
+          />
+        ) : (
+          <AwesomeLoading indicatorId={8} size={50} isActive={true} text="" />
+        )}
         <Text className="w-3/4 pt-2" style={{ color: "#6B707D" }}>
           Transaction are non-reversible. Plese ensure all information is
           correct
