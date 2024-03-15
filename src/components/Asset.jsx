@@ -16,7 +16,7 @@ const Asset = ({ icon, text, subtext, usd, change }) => {
         </View>
       </View>
       <View className=" ">
-        <Text className="text-lg text-white">{currencyFormat(usd)}</Text>
+        <Text className="text-lg text-white">{usd || "$0.00"}</Text>
         <Text
           className="self-end"
           style={{

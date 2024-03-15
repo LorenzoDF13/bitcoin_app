@@ -8,8 +8,9 @@ import Matic from "../../assets/svgs/matic.svg";
 import Eth from "../../assets/svgs/eth.svg";
 import BtcCash from "../../assets/svgs/btcCash.svg";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import BtcToUsd from "../utils/UsdFormat";
 const FoundsScreen = ({ navigation }) => {
-  const { usd, btcPrice } = useBitcoinStore();
+  const { usd, btcPrice, bitcoin } = useBitcoinStore();
   return (
     <SafeAreaView
       className="flex-1 text-white  px-4 "
@@ -103,9 +104,7 @@ const FoundsScreen = ({ navigation }) => {
               </View>
               <View className=" text-white">
                 <Text className="text-lg text-white">My BTC Wallet</Text>
-                <Text style={{ color: "#96979B" }}>
-                  {(usd / btcPrice).toFixed(10) + " BTC"}
-                </Text>
+                <Text style={{ color: "#96979B" }}>{bitcoin + " BTC"}</Text>
               </View>
             </View>
           </View>
@@ -114,7 +113,7 @@ const FoundsScreen = ({ navigation }) => {
               className="text-base  text-end text-white self-end"
               style={{}}
             >
-              {currencyFormat(usd)}
+              {BtcToUsd(bitcoin, btcPrice)}
             </Text>
           </View>
         </View>

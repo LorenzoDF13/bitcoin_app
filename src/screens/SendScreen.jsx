@@ -32,7 +32,9 @@ const SendScreen = ({ route, navigation }) => {
           >
             <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
           </Pressable>
-          <Text className="text-white text-lg ">{route.params.receiver}</Text>
+          <Text className="text-white text-lg w-1/2 " numberOfLines={1}>
+            {route.params.receiver}
+          </Text>
           <Text>
             <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
           </Text>

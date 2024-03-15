@@ -1,4 +1,11 @@
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -14,11 +21,13 @@ import currencyFormat from "../utils/CurrencyFormat";
 import usdToBtc from "../utils/BitcoinFormat";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import { useTransactionStore } from "../stores/TransactionStore";
+import WalletManager from "../components/WalletManager";
+import BtcToUsd from "../utils/UsdFormat";
 const HomeScreen = ({ navigation }) => {
-  const { usd, setBtcPrice, btcPrice, setLast24hChange } = useBitcoinStore();
-  const { resetTransactions } = useTransactionStore();
-  console.log("HOME: ", usd);
+  const { usd, setBtcPrice, bitcoin, btcPrice, setLast24hChange } =
+    useBitcoinStore();
   const [bitcoinData, setBitcoinData] = useState(null);
+  console.log(bitcoin);
   useEffect(() => {
     fetch("https://api.coinlore.net/api/ticker/?id=90")
       .then((response) => response.json())
@@ -39,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
       </Text>
       <View className="justify-between pb-3 flex-row">
         <Text className="text-4xl text-white font-bold">
-          {currencyFormat(usd)}
+          {BtcToUsd(bitcoin, btcPrice)}
         </Text>
         <View className="flex-row">
           <View
@@ -88,16 +97,18 @@ const HomeScreen = ({ navigation }) => {
         style={{ backgroundColor: "#242831" }}
       >
         <View className="items-center justify-center  gap-2 ">
-          <Pressable
-            className="bg-transparent"
+          <TouchableHighlight
+            underlayColor={"#242831"}
             onPress={() => {
               navigation.navigate("selectassett");
             }}
             title="Send"
           >
-            <Feather name="send" size={20} color="#0184fb" />
-            <Text className="text-white">Send</Text>
-          </Pressable>
+            <View>
+              <Feather name="send" size={20} color="#0184fb" />
+              <Text className="text-white">Send</Text>
+            </View>
+          </TouchableHighlight>
         </View>
         <View className="items-center">
           <Feather name="download" size={20} color="#0184fb" />
@@ -116,8 +127,8 @@ const HomeScreen = ({ navigation }) => {
       <Asset
         icon={<Bitcoin width={32} height={32} />}
         text="BTC"
-        subtext={usdToBtc(usd, btcPrice)}
-        usd={usd}
+        subtext={bitcoin + " BTC"}
+        usd={BtcToUsd(bitcoin, btcPrice)}
         change={bitcoinData?.percent_change_24h + "%"}
       ></Asset>
       <Asset
@@ -127,6 +138,7 @@ const HomeScreen = ({ navigation }) => {
         usd="0.00"
         change={"0.00%"}
       ></Asset>
+      <WalletManager />
     </SafeAreaView>
   );
 };

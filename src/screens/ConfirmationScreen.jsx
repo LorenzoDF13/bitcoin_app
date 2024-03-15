@@ -22,7 +22,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
   const { btcPrice } = useBitcoinStore();
   const [sliderState, setSliderState] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <SafeAreaView
       className="flex-1   px-4 "
@@ -36,7 +36,9 @@ const ConfirmationScreen = ({ navigation, route }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
         </Pressable>
-        <Text className="text-white text-lg ">Confirm</Text>
+        <Text className="text-white text-lg w-1/2" numberOfLines={1}>
+          {route.params.receiver}
+        </Text>
         <Text>
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Text>
@@ -146,7 +148,11 @@ const ConfirmationScreen = ({ navigation, route }) => {
             }}
           />
         ) : (
-          <Loader background={"#6B707D"} activeBackground={"#0184fb"} />
+          <Loader
+            useNativeDriver={true}
+            background={"#6B707D"}
+            activeBackground={"#0184fb"}
+          />
         )}
         <Text className="w-3/4 pt-2" style={{ color: "#6B707D" }}>
           Transaction are non-reversible. Plese ensure all information is

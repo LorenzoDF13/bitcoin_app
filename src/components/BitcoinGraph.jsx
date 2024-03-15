@@ -11,7 +11,6 @@ const BitcoinGraph = () => {
         setData(data.values);
       });
   }, []);
-  console.log(data);
   return (
     <View>
       <Chart

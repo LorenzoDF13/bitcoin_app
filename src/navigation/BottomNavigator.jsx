@@ -13,7 +13,6 @@ import Settings from "../../assets/svgs/settings.svg";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FoundsScreen from "../screens/FoundsScreen";
 const BottomNavigator = () => {
-  console.log("ok");
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

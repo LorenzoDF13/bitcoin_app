@@ -39,9 +39,12 @@ const ConfirmedModal = ({
           <Text className="text-white text-6xl text-center">
             {currencyFormat(amountUsd)}
           </Text>
-          <Text className="text-white pb-2 text-lg font-bold">
-            {usdToBtc(amountUsd, btcPrice, 10)}
-          </Text>
+          <View>
+            <Bitcoin width="24" height="24" />
+            <Text className="text-white pb-2 ml-2 text-lg font-bold">
+              {usdToBtc(amountUsd, btcPrice, 10)}
+            </Text>
+          </View>
           <Text className="text-white">Your payment has been sent to</Text>
           <Text className="text-white text-base">{receiver}</Text>
           <View className="mt-auto mb-6 w-full">

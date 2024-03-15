@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import currencyFormat from "../utils/CurrencyFormat";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
+import BtcToUsd from "../utils/UsdFormat";
 const BitcoinWalletScreen = ({ navigation }) => {
   const monthNames = [
     "January",
@@ -29,7 +30,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
     "December",
   ];
 
-  const { usd, btcPrice, last_24h_change } = useBitcoinStore();
+  const { usd, btcPrice, last_24h_change, bitcoin } = useBitcoinStore();
   const { transactions } = useTransactionStore();
   return (
     <SafeAreaView
@@ -59,7 +60,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
       </View>
       <View className="justify-center  py-6 ">
         <Text className="text-4xl text-white text-center  font-bold">
-          {currencyFormat(usd)}
+          {BtcToUsd(bitcoin, btcPrice)}
         </Text>
         <View className="gap-4   items-center">
           <Text
@@ -136,7 +137,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
                   <View className="ml-3">
                     <Text className="text-white">{transaction.type}</Text>
                     <Text style={{ color: "#96979B" }}>
-                      {format(new Date(transaction.date * 1000), "MMM d, y")}
+                      {format(new Date(transaction.date), "MMM d, y")}
                     </Text>
                   </View>
                 </View>

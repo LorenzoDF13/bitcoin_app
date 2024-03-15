@@ -17,7 +17,7 @@ export const useTransactionStore = create(
       ],
       addTransaction: (transaction) =>
         set(() => ({ transactions: [transaction, ...get().transactions] })),
-      resetTransactions: () => set(() => ({ transactions: [] })),
+      setTransactions: (transactions) => set(() => ({ transactions })),
     }),
     {
       name: "transactions-storage", // unique name
