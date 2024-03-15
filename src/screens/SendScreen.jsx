@@ -8,6 +8,10 @@ import {
   Feather,
 } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
+import currencyFormat from "../utils/CurrencyFormat";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import usdToBtc from "../utils/BitcoinFormat";
+import { TouchableHighlight } from "react-native-gesture-handler";
 const SendScreen = ({ route, navigation }) => {
   const { usd, btcPrice } = useBitcoinStore();
   const [value, setValue] = React.useState("");
@@ -34,15 +38,15 @@ const SendScreen = ({ route, navigation }) => {
         <View className="pt-10 ">
           <View>
             <Text className="text-white text-4xl p-3 text-center w-full ">
-              US$ {value}
+              {currencyFormat(value)}
             </Text>
             <View className=" justify-center flex-row mb-14">
-              <FontAwesome6 name="bitcoin" size={24} color="yellow" />
+              <Bitcoin width={24} height={24} />
               <Text
                 className="ml-3 text-base text-center  "
                 style={{ color: "#989cA6" }}
               >
-                {(parseFloat(value) / btcPrice).toFixed(10)} BTC
+                {usdToBtc(value, btcPrice, 10)}
               </Text>
             </View>
           </View>
@@ -85,8 +89,8 @@ const SendScreen = ({ route, navigation }) => {
           </View>
           <View>
             <View>
-              <Text className="font-bold text-white">
-                US$ {usd}
+              <Text className="font-bold text-white text-lg">
+                {currencyFormat(usd)}
                 <Feather name="chevron-right" size={20} color="#0184fb" />
               </Text>
             </View>
@@ -95,18 +99,19 @@ const SendScreen = ({ route, navigation }) => {
         <View className="flex-wrap flex-row justify-center">
           {["0", "1", "2", "3", "4", "5", "6", "7", "8", ".", "9", "x"].map(
             (item) => (
-              <TouchableOpacity
+              <TouchableHighlight
                 key={item}
                 style={{ height: 75, width: 100 }}
+                underlayColor={"#50535A"}
                 onPress={() => {
                   if (item != "x") setValue((value) => value + item);
 
                   if (item == "x") setValue((value) => value.slice(0, -1));
                 }}
-                className="justify-center items-center"
+                className="justify-center  items-center"
               >
                 <Text className="text-white  text-3xl">{item}</Text>
-              </TouchableOpacity>
+              </TouchableHighlight>
             )
           )}
         </View>

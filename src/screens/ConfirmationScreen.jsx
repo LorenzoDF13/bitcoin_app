@@ -14,6 +14,8 @@ import { useBitcoinStore } from "../stores/BitcoinStore";
 import SlideToConfirm from "rn-slide-to-confirm";
 import { Ionicons } from "@expo/vector-icons";
 import ConfirmedModal from "../components/ConfirmedModal";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import usdToBtc from "../utils/BitcoinFormat";
 const ConfirmationScreen = ({ navigation, route }) => {
   const { btcPrice } = useBitcoinStore();
   const [sliderState, setSliderState] = useState(false);
@@ -47,7 +49,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
         <View className="flex-row ">
           <View className="text-white rounded-full ">
             <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
-            <FontAwesome6 name="bitcoin" size={24} color="#f0A10F" />
+            <Bitcoin width={24} height={24} />
           </View>
           <Text className="text-white pl-3 text-base">Bitcoin</Text>
         </View>
@@ -77,7 +79,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
           BTC Network fee:
         </Text>
         <View className=" flex-row">
-          <Text className="font-bold text-lg text-white">US$5.23</Text>
+          <Text className="font-bold text-lg text-white">$5.23</Text>
         </View>
       </View>
       <View className="pb-6 border-b border-b-white">
@@ -87,19 +89,19 @@ const ConfirmationScreen = ({ navigation, route }) => {
         >
           They will recive:
         </Text>
-        <View className=" flex-row">
+        <View className="">
           <Text className="font-bold text-4xl py-1 text-white">
             US${route.params.amountUsd}
           </Text>
           <Text
-            className="font-bold text-3xl py-1 "
+            className="font-bold text-lg py-1 "
             style={{ color: "#96979B" }}
           >
-            {(route.params.amountUsd / btcPrice).toFixed(8)} BTC
+            {usdToBtc(route.params.amountUsd, btcPrice, 8)}
           </Text>
         </View>
       </View>
-      <View className="mt-auto mb-6 justify-center items-center ">
+      <View className="mt-auto  justify-center items-center ">
         <SlideToConfirm
           unconfimredTipText={"SLIDE TO SEND  "}
           unconfirmedTipTextStyle={{

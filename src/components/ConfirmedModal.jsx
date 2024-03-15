@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
 import { useTransactionStore } from "../stores/TransactionStore";
+import currencyFormat from "../utils/CurrencyFormat";
+import usdToBtc from "../utils/BitcoinFormat";
 const ConfirmedModal = ({
   amountUsd,
   receiver,
@@ -11,7 +13,7 @@ const ConfirmedModal = ({
   setIsVisible,
   navigation,
 }) => {
-  const { btcPrice } = useBitcoinStore();
+  const { btcPrice, usd, setUsd } = useBitcoinStore();
   const { addTransaction } = useTransactionStore();
   return (
     <SafeAreaView>
@@ -35,10 +37,10 @@ const ConfirmedModal = ({
             <Feather name="check-circle" size={112} color="white" />
           </View>
           <Text className="text-white text-6xl text-center">
-            US${amountUsd}
+            {currencyFormat(amountUsd)}
           </Text>
           <Text className="text-white pb-2">
-            {(amountUsd / btcPrice).toFixed(8)}
+            {usdToBtc(amountUsd, btcPrice, 8)}
           </Text>
           <Text className="text-white">Your payment has been sent to</Text>
           <Text className="text-white text-base">{receiver}</Text>
@@ -46,13 +48,14 @@ const ConfirmedModal = ({
             <Pressable
               className="bg-white rounded-xl p-3"
               onPress={() => {
+                setUsd(usd - amountUsd);
                 addTransaction({
                   amountUsd,
                   receiver: receiver,
                   date: new Date().getTime(),
                   type: "Sent",
                 });
-                navigation.navigate("Home");
+                navigation.navigate("home");
               }}
             >
               <Text

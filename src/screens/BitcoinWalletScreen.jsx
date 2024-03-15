@@ -10,6 +10,9 @@ import {
 import { useTransactionStore } from "../stores/TransactionStore";
 import { useBitcoinStore } from "../stores/BitcoinStore";
 import { format } from "date-fns";
+import currencyFormat from "../utils/CurrencyFormat";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import usdToBtc from "../utils/BitcoinFormat";
 const BitcoinWalletScreen = ({ navigation }) => {
   const monthNames = [
     "January",
@@ -56,7 +59,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
       </View>
       <View className="justify-center  py-6 ">
         <Text className="text-4xl text-white text-center  font-bold">
-          US${usd}
+          {currencyFormat(usd)}
         </Text>
         <View className="gap-4   items-center">
           <Text
@@ -122,21 +125,18 @@ const BitcoinWalletScreen = ({ navigation }) => {
                   {transaction.type == "Received" ? (
                     <View className="text-white rounded-full ">
                       <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
-                      <FontAwesome6 name="bitcoin" size={24} color="#f0A10F" />
+                      <Bitcoin width={24} height={24} />
                     </View>
                   ) : (
                     <View className="text-white rounded-full ">
                       <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
-                      <FontAwesome6 name="bitcoin" size={24} color="red" />
+                      <Bitcoin width={24} height={24} />
                     </View>
                   )}
                   <View className="ml-3">
                     <Text className="text-white">{transaction.type}</Text>
                     <Text style={{ color: "#96979B" }}>
-                      {format(
-                        new Date(transaction.date * 1000),
-                        "d MMM y H:mm"
-                      )}
+                      {format(new Date(transaction.date * 1000), "MMM d, y")}
                     </Text>
                   </View>
                 </View>
@@ -144,14 +144,14 @@ const BitcoinWalletScreen = ({ navigation }) => {
                   <Text
                     style={{
                       color:
-                        transaction.type == "Received" ? "#05BD88" : "#E23F2E",
+                        transaction.type == "Received" ? "#05BD88" : "#F19F0F",
                     }}
                   >
-                    {transaction.type == "Received" ? "+" : "-"} US$
-                    {transaction.amountUsd}
+                    {transaction.type == "Received" ? "+" : "-"}
+                    {currencyFormat(transaction.amountUsd)}
                   </Text>
                   <Text style={{ color: "#96979B" }}>
-                    {(transaction.amountUsd / btcPrice).toFixed(8)} BTC
+                    {usdToBtc(transaction.amountUsd / btcPrice, 8)}
                   </Text>
                 </View>
               </View>

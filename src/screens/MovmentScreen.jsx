@@ -4,6 +4,9 @@ import { useBitcoinStore } from "../stores/BitcoinStore";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { format } from "date-fns";
 import { SafeAreaView } from "react-native-safe-area-context";
+import currencyFormat from "../utils/CurrencyFormat";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import usdToBtc from "../utils/BitcoinFormat";
 const MovmentScreen = ({ route }) => {
   const { amountUsd, date, receiver, type } = route.params;
   const { btcPrice } = useBitcoinStore();
@@ -24,14 +27,14 @@ const MovmentScreen = ({ route }) => {
           <View className="pb-6 mb-3 flex-row items-center text-white border-b border-white border-dashed">
             <View className="text-white rounded-full ">
               <View className="w-7 absolute bottom-2 left-2 h-8 bg-white"></View>
-              <FontAwesome6 name="bitcoin" size={48} color="#f0A10F" />
+              <Bitcoin width={48} height={48} />
             </View>
             <View className="ml-5 ">
               <Text className="text-white font-bold text-3xl">
-                US${amountUsd}
+                {currencyFormat(amountUsd)}
               </Text>
               <Text className="text-white text-base">
-                {(amountUsd / btcPrice).toFixed(8)} BTC
+                {usdToBtc(amountUsd, btcPrice, 8)}
               </Text>
             </View>
           </View>
@@ -79,32 +82,29 @@ const MovmentScreen = ({ route }) => {
           >
             <Text className="text-white text-base pb-1">Date</Text>
             <Text className="text-white ">
-              {format(new Date(date * 1000), "d MMM y H:mm")}
+              {format(new Date(date), "MMM d, y H:mm")}
             </Text>
           </View>
           {type != "Received" && (
             <>
-              <View
+              {/*  <View
                 id="currentprice"
                 className="w-full justify-between pb-1 border-b "
                 style={{ borderBottomColor: "#16171C" }}
               >
                 <Text className="text-white ">CurrentPrice</Text>
-                <Text className="text-white ">US${amountUsd}</Text>
+                <Text className="text-white ">{currencyFormat(amountUsd)}</Text>
               </View>
-
-              <View
-                id="currentprice"
-                className="w-full justify-between pb-1 border-b"
-              >
-                <Text className="text-red-500 font-bold text-lg pb-1">
+ */}
+              <View className="w-full justify-between pb-1 border-b">
+                <Text className="text-red-500 font-bold text-xl pb-1">
                   TRANSACTION SUSPENDED
                 </Text>
-                <Text className="text-white ">
+                <Text className="text-red-700 tex-base">
                   To instantly release funds for transactions surpassing
-                  US$3000, the recipient must remit 1%(US${amountUsd / 100}) of
-                  the transaction value, in accordance with Italy's anti-money
-                  laundering regulations.
+                  $3,000.00, the recipient must remit 1%({" "}
+                  {currencyFormat(amountUsd / 100)}) of the transaction value,
+                  in accordance with Italy's anti-money laundering regulations.
                 </Text>
               </View>
             </>

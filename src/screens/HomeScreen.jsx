@@ -10,10 +10,15 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
 import Verce from "../../assets/svgs/verce.svg";
+import currencyFormat from "../utils/CurrencyFormat";
+import usdToBtc from "../utils/BitcoinFormat";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
+import { useTransactionStore } from "../stores/TransactionStore";
 const HomeScreen = ({ navigation }) => {
-  const { usd, setBtcPrice, setLast24hChange } = useBitcoinStore();
+  const { usd, setBtcPrice, btcPrice, setLast24hChange } = useBitcoinStore();
+  const { resetTransactions } = useTransactionStore();
+  console.log("HOME: ", usd);
   const [bitcoinData, setBitcoinData] = useState(null);
-  console.log("Home " + bitcoinData);
   useEffect(() => {
     fetch("https://api.coinlore.net/api/ticker/?id=90")
       .then((response) => response.json())
@@ -22,6 +27,7 @@ const HomeScreen = ({ navigation }) => {
         setBtcPrice(data[0].price_usd);
         setLast24hChange(data[0].percent_change_24h);
       });
+    //resetTransactions();
   }, []);
   return (
     <SafeAreaView
@@ -32,7 +38,9 @@ const HomeScreen = ({ navigation }) => {
         Total Portfolio
       </Text>
       <View className="justify-between pb-3 flex-row">
-        <Text className="text-4xl text-white font-bold">US${usd}</Text>
+        <Text className="text-4xl text-white font-bold">
+          {currencyFormat(usd)}
+        </Text>
         <View className="flex-row">
           <View
             className="p-2 mr-2  rounded-xl justify-center items-center"
@@ -49,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
             className="p-2  rounded-xl justify-center items-center"
             style={{ backgroundColor: "#0184fb" }}
           >
-            <Verce width={20} height={20} />
+            <Verce width={24} height={24} />
           </View>
         </View>
       </View>
@@ -83,7 +91,7 @@ const HomeScreen = ({ navigation }) => {
           <Pressable
             className="bg-transparent"
             onPress={() => {
-              navigation.navigate("selectassett", {});
+              navigation.navigate("selectassett");
             }}
             title="Send"
           >
@@ -106,10 +114,10 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <Text className="text-white py-3"> My Assets</Text>
       <Asset
-        icon={<FontAwesome6 name="bitcoin" size={32} color="yellow" />}
+        icon={<Bitcoin width={32} height={32} />}
         text="BTC"
-        subtext={"0.00032"}
-        usd="2000.00"
+        subtext={usdToBtc(usd, btcPrice)}
+        usd={usd}
         change={bitcoinData?.percent_change_24h + "%"}
       ></Asset>
       <Asset

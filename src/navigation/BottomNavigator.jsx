@@ -72,7 +72,9 @@ const BottomNavigator = () => {
       <Tab.Screen
         name="Founds"
         component={FoundsScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       <Tab.Screen
         name="Discovery"

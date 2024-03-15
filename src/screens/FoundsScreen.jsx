@@ -3,6 +3,11 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5, Feather, FontAwesome6 } from "@expo/vector-icons";
 import { useBitcoinStore } from "../stores/BitcoinStore";
+import currencyFormat from "../utils/CurrencyFormat";
+import Matic from "../../assets/svgs/matic.svg";
+import Eth from "../../assets/svgs/eth.svg";
+import BtcCash from "../../assets/svgs/btcCash.svg";
+import Bitcoin from "../../assets/svgs/bitcoin.svg";
 const FoundsScreen = ({ navigation }) => {
   const { usd, btcPrice } = useBitcoinStore();
   return (
@@ -61,9 +66,9 @@ const FoundsScreen = ({ navigation }) => {
         className="rounded-xl p-3 px-5 justify-between items-center flex-row w-full mb-3"
         style={{ backgroundColor: "#242831" }}
       >
-        <View className="flex-row">
+        <View className="flex-row justify-center items-center">
           <View className="mr-5">
-            <FontAwesome6 name="bitcoin" size={32} color="green" />
+            <BtcCash width={30} height={30} />
           </View>
           <View className=" text-white">
             <Text className="text-lg text-white">My BHC Wallet</Text>
@@ -75,43 +80,52 @@ const FoundsScreen = ({ navigation }) => {
             className="text-base  text-end  self-end"
             style={{ color: "#50535A" }}
           >
-            US$0.00
+            $0.00
           </Text>
         </View>
       </View>
-      <View
-        className="rounded-xl p-3 px-5 justify-between items-center flex-row w-full mb-3"
-        style={{ backgroundColor: "#242831" }}
+      <TouchableHighlight
+        className="rounded-xl mb-3"
+        onPress={() => navigation.navigate("btcwallet")}
+        underlayColor={"#50535A"}
       >
-        <TouchableHighlight
-          onPress={() => navigation.navigate("btcwallet")}
-          className="flex-row"
+        <View
+          className="rounded-xl p-3 px-5  justify-between items-center flex-row w-full "
+          style={{ backgroundColor: "#242831" }}
         >
-          <View className="flex-row">
-            <View className="mr-5">
-              <FontAwesome6 name="bitcoin" size={32} color="yellow" />
-            </View>
-            <View className=" text-white">
-              <Text className="text-lg text-white">My BTC Wallet</Text>
-              <Text style={{ color: "#96979B" }}>
-                {(usd / btcPrice).toFixed(10) + " BTC"}
-              </Text>
+          <View
+            onPress={() => navigation.navigate("btcwallet")}
+            className="flex-row"
+          >
+            <View className="flex-row justify-center items-center">
+              <View className="mr-5">
+                <Bitcoin width={30} height={30} />
+              </View>
+              <View className=" text-white">
+                <Text className="text-lg text-white">My BTC Wallet</Text>
+                <Text style={{ color: "#96979B" }}>
+                  {(usd / btcPrice).toFixed(10) + " BTC"}
+                </Text>
+              </View>
             </View>
           </View>
-        </TouchableHighlight>
-        <View className="justify-end align-bottom">
-          <Text className="text-base  text-end text-white self-end" style={{}}>
-            US${usd}
-          </Text>
+          <View className="justify-end align-bottom">
+            <Text
+              className="text-base  text-end text-white self-end"
+              style={{}}
+            >
+              {currencyFormat(usd)}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
       <View
         className="rounded-xl p-3 px-5 justify-between items-center flex-row w-full mb-3"
         style={{ backgroundColor: "#242831" }}
       >
-        <View className="flex-row">
+        <View className="flex-row justify-center items-center">
           <View className="mr-5">
-            <FontAwesome6 name="bitcoin" size={32} color="purple" />
+            <Eth width={30} height={30} />
           </View>
           <View className=" text-white">
             <Text className="text-lg text-white">My ETH Wallet</Text>
@@ -123,7 +137,7 @@ const FoundsScreen = ({ navigation }) => {
             className="text-base  text-end  self-end"
             style={{ color: "#50535A" }}
           >
-            US$0.00
+            $0.00
           </Text>
         </View>
       </View>
@@ -131,9 +145,9 @@ const FoundsScreen = ({ navigation }) => {
         className="rounded-xl p-3 px-5 justify-between items-center flex-row w-full mb-3"
         style={{ backgroundColor: "#242831" }}
       >
-        <View className="flex-row">
+        <View className="flex-row justify-center items-center">
           <View className="mr-5">
-            <FontAwesome6 name="bitcoin" size={32} color="violet" />
+            <Matic width={30} height={30} />
           </View>
           <View className=" text-white">
             <Text className="text-lg text-white">My MATIC Wallet</Text>
@@ -145,7 +159,7 @@ const FoundsScreen = ({ navigation }) => {
             className="text-base  text-end  self-end"
             style={{ color: "#50535A" }}
           >
-            US$0.00
+            $0.00
           </Text>
         </View>
       </View>

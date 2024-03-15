@@ -6,10 +6,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 export const useBitcoinStore = create(
   persist(
     (set, get) => ({
-      usd: "2.000",
+      usd: 20000 /* METTERE UN NUMERO NON STRINGA */,
       bitcoin: 0,
       last_24h_change: 0,
-      btcPrice: "0",
+      btcPrice: 0,
       setBtcPrice: (btcPrice) => set({ btcPrice }),
       setUsd: (usd) => set({ usd }),
       setLast24hChange: (last_24h_change) => set({ last_24h_change }),
@@ -17,7 +17,7 @@ export const useBitcoinStore = create(
     }),
     {
       name: "bitcoin-storage", // unique name
-      getStorage: createJSONStorage(() => AsyncStorage), // Add this here!
+      storage: createJSONStorage(() => AsyncStorage), // Add this here!
     }
   )
 );

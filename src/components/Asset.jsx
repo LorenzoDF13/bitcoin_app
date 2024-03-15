@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
+import currencyFormat from "../utils/CurrencyFormat";
 
 const Asset = ({ icon, text, subtext, usd, change }) => {
   return (
@@ -15,7 +16,7 @@ const Asset = ({ icon, text, subtext, usd, change }) => {
         </View>
       </View>
       <View className=" ">
-        <Text className="text-lg text-white">US${usd}</Text>
+        <Text className="text-lg text-white">{currencyFormat(usd)}</Text>
         <Text
           className="self-end"
           style={{

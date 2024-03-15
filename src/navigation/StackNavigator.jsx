@@ -1,4 +1,7 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import SelectAssettScreen from "../screens/SelectAssettScreen";
 import BottomNavigator from "./BottomNavigator";
@@ -14,18 +17,20 @@ function MyStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        gestureDirection: "horizontal",
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
       <Stack.Screen
-        name="Home"
+        name="home"
         component={BottomNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureDirection: "horizontal" }}
       />
       <Stack.Screen
         name="selectassett"
         component={SelectAssettScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="selectsender"
@@ -40,12 +45,20 @@ function MyStack() {
       <Stack.Screen
         name="btcwallet"
         component={BitcoinWalletScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator:
+            CardStyleInterpolators.forRevealFromBottomAndroid,
+        }}
       />
       <Stack.Screen
         name="movment"
         component={MovmentScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator:
+            CardStyleInterpolators.forRevealFromBottomAndroid,
+        }}
       />
       <Stack.Screen
         name="confirm"
