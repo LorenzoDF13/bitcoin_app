@@ -14,13 +14,14 @@ import usdToBtc from "../utils/BitcoinFormat";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
+import BtcToUsd from "../utils/UsdFormat";
 const SendScreen = ({ route, navigation }) => {
-  const { usd, btcPrice } = useBitcoinStore();
+  const { usd, btcPrice, bitcoin } = useBitcoinStore();
   const [value, setValue] = React.useState("");
 
   return (
     <SafeAreaView
-      className="flex-1 justify-between text-white   "
+      className="flex-1 justify-between text-white   pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <View className="px-4">
@@ -110,7 +111,7 @@ const SendScreen = ({ route, navigation }) => {
           <View>
             <View>
               <Text className="font-bold text-white text-lg">
-                {currencyFormat(usd)}
+                {BtcToUsd(bitcoin, btcPrice)}
                 <Feather name="chevron-right" size={20} color="#0184fb" />
               </Text>
             </View>

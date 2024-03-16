@@ -25,7 +25,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <SafeAreaView
-      className="flex-1   px-4 "
+      className="flex-1   px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <View className=" pb-5 flex-row justify-between">

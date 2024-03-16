@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Area, Chart, Line } from "react-native-responsive-linechart";
 
-const BitcoinGraph = () => {
+const BitcoinGraph = ({ LineColor, ToColor, heigth }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch("https://api.blockchain.info/charts/market-price?timespan=1months")
@@ -14,7 +14,7 @@ const BitcoinGraph = () => {
   return (
     <View>
       <Chart
-        style={{ height: 150 }}
+        style={{ height: heigth || 150 }}
         data={data || [{ x: 1, y: 4 }]}
         padding={{ left: 0, bottom: 20, right: 0, top: 20 }}
         xDomain={{
@@ -29,15 +29,15 @@ const BitcoinGraph = () => {
         <Area
           theme={{
             gradient: {
-              from: { color: "#0b447c" },
-              to: { color: "#0b447c", opacity: 0.1 },
+              from: { color: LineColor },
+              to: { color: ToColor, opacity: 0.1 },
             },
           }}
         />
         <Line
           smoothing="bezier"
           theme={{
-            stroke: { color: "#0975dd", width: 1 },
+            stroke: { color: LineColor, width: 1 },
           }}
         />
       </Chart>

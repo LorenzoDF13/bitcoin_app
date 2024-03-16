@@ -23,11 +23,13 @@ import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import { useTransactionStore } from "../stores/TransactionStore";
 import WalletManager from "../components/WalletManager";
 import BtcToUsd from "../utils/UsdFormat";
+import BtcCash from "../../assets/svgs/btcCash.svg";
+import Eth from "../../assets/svgs/eth.svg";
 const HomeScreen = ({ navigation }) => {
   const { usd, setBtcPrice, bitcoin, btcPrice, setLast24hChange } =
     useBitcoinStore();
   const [bitcoinData, setBitcoinData] = useState(null);
-  console.log(bitcoin);
+  console.log(typeof bitcoin);
   useEffect(() => {
     fetch("https://api.coinlore.net/api/ticker/?id=90")
       .then((response) => response.json())
@@ -40,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
   }, []);
   return (
     <SafeAreaView
-      className="flex-1 text-white  px-4 "
+      className="flex-1 text-white  px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <Text className=" pb-3 text-lg font-bold" style={{ color: "#96979B" }}>
@@ -58,7 +60,6 @@ const HomeScreen = ({ navigation }) => {
             <MaterialCommunityIcons
               name="qrcode-scan"
               size={20}
-              className=""
               color="#0184fb"
             />
           </View>
@@ -90,7 +91,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
       </View>
       <View>
-        <BitcoinGraph />
+        <BitcoinGraph LineColor={"#0882f1"} toColor={"#0b447c"} />
       </View>
       <View
         className="flex-row justify-around rounded-xl p-3 "
@@ -123,22 +124,78 @@ const HomeScreen = ({ navigation }) => {
           <Text className="text-white">Swap</Text>
         </View>
       </View>
-      <Text className="text-white py-3"> My Assets</Text>
-      <Asset
-        icon={<Bitcoin width={32} height={32} />}
-        text="BTC"
-        subtext={bitcoin + " BTC"}
-        usd={BtcToUsd(bitcoin, btcPrice)}
-        change={bitcoinData?.percent_change_24h + "%"}
-      ></Asset>
+      <View className="py-3 flex-row justify-between">
+        <Text className="text-white text-base"> My Assets</Text>
+        <WalletManager />
+      </View>
       <Asset
         icon={<Verce width={32} height={32} />}
         text="Verse"
         subtext={"0 verse"}
-        usd="0.00"
+        usd="$0.00"
         change={"0.00%"}
       ></Asset>
-      <WalletManager />
+      <View
+        className="rounded-t-xl p-3 px-5 justify-between  flex-row w-full "
+        style={{ backgroundColor: "#242831" }}
+      >
+        <View className="flex-row justify-center items-center ">
+          <View className="mr-5">
+            <BtcCash width={30} height={30} />
+          </View>
+          <View className=" text-white">
+            <Text className="text-base text-white">Bitcoin Cash</Text>
+            <Text style={{ color: "#96979B" }}>0 BCH</Text>
+          </View>
+        </View>
+        <View className=" ">
+          <Text className="text-base text-white">{"$0.00"}</Text>
+          <Text
+            className="self-end"
+            style={{
+              color: "#96979B",
+            }}
+          >
+            {"0.00%"}
+          </Text>
+        </View>
+      </View>
+      <Asset
+        icon={<Bitcoin width={30} height={30} />}
+        text="Bitcoin"
+        subtext={parseFloat(bitcoin).toFixed(10) + " BTC"}
+        usd={BtcToUsd(bitcoin, btcPrice)}
+        change={bitcoinData?.percent_change_24h + "%"}
+      ></Asset>
+      <View
+        className="flex-row justify-between   p-3 px-5 rounded-b-xl"
+        style={{ backgroundColor: "#242831" }}
+      >
+        <View
+          className="flex-row  items-center  "
+          style={{ backgroundColor: "#242831" }}
+        >
+          <View className="mr-5">
+            <Eth width={30} height={30} />
+          </View>
+          <View className=" text-white">
+            <Text className="text-base text-white">Ethereum</Text>
+            <Text style={{ color: "#96979B" }}>0 BCH</Text>
+          </View>
+        </View>
+        <View className=" ">
+          <Text className="text-base text-white">{"$0.00"}</Text>
+          <Text
+            className="self-end"
+            style={{
+              color: "#96979B",
+            }}
+          >
+            {"0.00%"}
+          </Text>
+        </View>
+      </View>
+      <Text className="text-white py-3"> Services</Text>
     </SafeAreaView>
   );
 };

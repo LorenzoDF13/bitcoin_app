@@ -15,7 +15,7 @@ import Asset from "../components/Asset";
 export default SelectAssettScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView
-      className="flex-1 text-white  px-4 "
+      className="flex-1 text-white  px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <View className=" pb-5 flex-row justify-between">

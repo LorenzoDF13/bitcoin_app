@@ -14,7 +14,6 @@ LogBox.ignoreAllLogs();
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#17161C" />
       <MyStack></MyStack>
     </NavigationContainer>
   );

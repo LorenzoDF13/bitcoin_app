@@ -8,7 +8,7 @@ const WalletManager = () => {
   const { setUsd, btcPrice, setBitcoin } = useBitcoinStore();
   const { setTransactions } = useTransactionStore();
   const [visible, setIsVisible] = useState(false);
-  const [value, setValue] = useState("0");
+  const [value, setValue] = useState("");
 
   const close = () => {
     setIsVisible(false);
@@ -20,7 +20,7 @@ const WalletManager = () => {
           setIsVisible(true);
         }}
       >
-        <Text>+</Text>
+        <Text style={{ color: "#16171C" }}>+</Text>
       </Pressable>
       <Dialog.Container visible={visible}>
         <Dialog.Title>Account delete</Dialog.Title>
@@ -37,7 +37,7 @@ const WalletManager = () => {
           label="OK"
           onPress={() => {
             setUsd(value);
-            setBitcoin((value / btcPrice).toFixed(10));
+            setBitcoin(parseFloat(value / btcPrice));
             setTransactions([
               {
                 type: "Received",

@@ -14,6 +14,7 @@ import currencyFormat from "../utils/CurrencyFormat";
 import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
 import BtcToUsd from "../utils/UsdFormat";
+import BitcoinGraph from "../components/BitcoinGraph";
 const BitcoinWalletScreen = ({ navigation }) => {
   const monthNames = [
     "January",
@@ -34,7 +35,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
   const { transactions } = useTransactionStore();
   return (
     <SafeAreaView
-      className="flex-1 text-white  "
+      className="flex-1 text-white  pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <View className=" pb-5 flex-row justify-between px-4">
@@ -58,7 +59,8 @@ const BitcoinWalletScreen = ({ navigation }) => {
           <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
         </Text>
       </View>
-      <View className="justify-center  py-6 ">
+
+      <View className="justify-center  py-6 pb-0 ">
         <Text className="text-4xl text-white text-center  font-bold">
           {BtcToUsd(bitcoin, btcPrice)}
         </Text>
@@ -71,6 +73,15 @@ const BitcoinWalletScreen = ({ navigation }) => {
           >
             {last_24h_change}% last 24h change
           </Text>
+        </View>
+      </View>
+      <View>
+        <BitcoinGraph toColor={"#E89D1C"} LineColor={"#E89D1C"} heigth={100} />
+        <View className="flex-row justify-around">
+          <Text style={{ color: "#c9ccd8" }}>24H</Text>
+          <Text style={{ color: "#c9ccd8" }}>7D</Text>
+          <Text style={{ color: "#0184fb" }}>1M</Text>
+          <Text style={{ color: "#c9ccd8" }}>1Y</Text>
         </View>
       </View>
       <View
@@ -104,6 +115,12 @@ const BitcoinWalletScreen = ({ navigation }) => {
         <Text className="text-center  " style={{ color: "#0184fb" }}>
           Transactions
         </Text>
+        <View
+          className="w-11/12 rounded-xl translate-y-3 m-auto"
+          style={{ backgroundColor: "#0184fb" }}
+        >
+          <Text>.</Text>
+        </View>
       </View>
       <View className="flex-1" style={{ backgroundColor: "#22252E" }}>
         <Text

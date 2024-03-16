@@ -13,7 +13,7 @@ const FoundsScreen = ({ navigation }) => {
   const { usd, btcPrice, bitcoin } = useBitcoinStore();
   return (
     <SafeAreaView
-      className="flex-1 text-white  px-4 "
+      className="flex-1 text-white  px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <View className=" pb-5 flex-row justify-between">
@@ -72,7 +72,7 @@ const FoundsScreen = ({ navigation }) => {
             <BtcCash width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-lg text-white">My BHC Wallet</Text>
+            <Text className="text-base text-white">My BHC Wallet</Text>
             <Text style={{ color: "#96979B" }}>0 BCH</Text>
           </View>
         </View>
@@ -103,8 +103,10 @@ const FoundsScreen = ({ navigation }) => {
                 <Bitcoin width={30} height={30} />
               </View>
               <View className=" text-white">
-                <Text className="text-lg text-white">My BTC Wallet</Text>
-                <Text style={{ color: "#96979B" }}>{bitcoin + " BTC"}</Text>
+                <Text className="text-base text-white">My BTC Wallet</Text>
+                <Text style={{ color: "#96979B" }}>
+                  {parseFloat(bitcoin).toFixed(10) + " BTC"}
+                </Text>
               </View>
             </View>
           </View>
@@ -127,7 +129,7 @@ const FoundsScreen = ({ navigation }) => {
             <Eth width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-lg text-white">My ETH Wallet</Text>
+            <Text className="text-base text-white">My ETH Wallet</Text>
             <Text style={{ color: "#96979B" }}>0 ETH</Text>
           </View>
         </View>
@@ -149,7 +151,7 @@ const FoundsScreen = ({ navigation }) => {
             <Matic width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-lg text-white">My MATIC Wallet</Text>
+            <Text className="text-base text-white">My MATIC Wallet</Text>
             <Text style={{ color: "#96979B" }}>0 MATIC</Text>
           </View>
         </View>

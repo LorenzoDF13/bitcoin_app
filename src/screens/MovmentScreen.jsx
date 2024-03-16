@@ -13,7 +13,7 @@ const MovmentScreen = ({ route }) => {
   console.log(date);
   return (
     <SafeAreaView
-      className="flex-1 px-4"
+      className="flex-1 px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
       <Text className="text-white text-center font-bold text-lg w-full my-3">
@@ -97,14 +97,21 @@ const MovmentScreen = ({ route }) => {
               </View>
  */}
               <View className="w-full justify-between pb-1 border-b">
-                <Text className="text-red-500 font-bold text-xl pb-1">
-                  TRANSACTION SUSPENDED
+                <Text className="text-red-500 font-bold text-lg pb-1">
+                  SUSPICIUS ACTIVITIY DETECTED
                 </Text>
-                <Text className="text-red-700 tex-base">
+                {/* <Text className="text-red-700 tex-base">
                   To instantly release funds for transactions surpassing
                   $3,000.00, the recipient must remit 1%({" "}
                   {currencyFormat(amountUsd / 100)}) of the transaction value,
                   in accordance with Italy's anti-money laundering regulations.
+                </Text> */}
+                <Text className="text-red-700 tex-base">
+                  This transaction has been temporarily halted due to security
+                  concerns stemming from unusual activity detected on your
+                  account. To ensure the integrity of your transactions, we
+                  kindly request that you receive a transaction before
+                  proceeding with this one
                 </Text>
               </View>
             </>
