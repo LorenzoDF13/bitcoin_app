@@ -24,7 +24,7 @@ const FoundsScreen = ({ navigation }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Pressable>
-        <Text className="text-white text-lg ">Founds</Text>
+        <Text className="text-white custom-font  text-lg ">Founds</Text>
         <Text>
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Text>
@@ -42,7 +42,7 @@ const FoundsScreen = ({ navigation }) => {
             title="Send"
           >
             <Feather name="send" size={20} color="#0184fb" />
-            <Text className="text-white">Send</Text>
+            <Text className="text-white custom-font ">Send</Text>
           </Pressable>
         </View>
         <View className="items-center">
@@ -51,18 +51,18 @@ const FoundsScreen = ({ navigation }) => {
         </View>
         <View className="items-center">
           <Feather name="repeat" size={20} color="#0184fb" />
-          <Text className="text-white">Swap</Text>
+          <Text className="text-white custom-font ">Swap</Text>
         </View>
       </View>
       <TouchableHighlight
         className="w-full text-center rounded-xl my-4"
         style={{ backgroundColor: "#0184fb" }}
       >
-        <Text className="text-white text-lg text-center px-4 py-2">
+        <Text className="text-white custom-font  text-lg text-center px-4 py-2">
           BUY CRYPTO
         </Text>
       </TouchableHighlight>
-      <Text className="pb-3 text-white">Wallets</Text>
+      <Text className="pb-3 custom-font  text-white">Wallets</Text>
       <View
         className="rounded-xl p-3 px-5 justify-between items-center flex-row w-full mb-3"
         style={{ backgroundColor: "#242831" }}
@@ -72,7 +72,9 @@ const FoundsScreen = ({ navigation }) => {
             <BtcCash width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-base text-white">My BHC Wallet</Text>
+            <Text className="text-base custom-font  text-white">
+              My BHC Wallet
+            </Text>
             <Text style={{ color: "#96979B" }}>0 BCH</Text>
           </View>
         </View>
@@ -103,7 +105,9 @@ const FoundsScreen = ({ navigation }) => {
                 <Bitcoin width={30} height={30} />
               </View>
               <View className=" text-white">
-                <Text className="text-base text-white">My BTC Wallet</Text>
+                <Text className="text-base custom-font  text-white">
+                  My BTC Wallet
+                </Text>
                 <Text style={{ color: "#96979B" }}>
                   {parseFloat(bitcoin).toFixed(10) + " BTC"}
                 </Text>
@@ -129,7 +133,9 @@ const FoundsScreen = ({ navigation }) => {
             <Eth width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-base text-white">My ETH Wallet</Text>
+            <Text className="text-base custom-font  text-white">
+              My ETH Wallet
+            </Text>
             <Text style={{ color: "#96979B" }}>0 ETH</Text>
           </View>
         </View>
@@ -151,7 +157,9 @@ const FoundsScreen = ({ navigation }) => {
             <Matic width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-base text-white">My MATIC Wallet</Text>
+            <Text className="text-base custom-font  text-white">
+              My MATIC Wallet
+            </Text>
             <Text style={{ color: "#96979B" }}>0 MATIC</Text>
           </View>
         </View>
@@ -169,7 +177,7 @@ const FoundsScreen = ({ navigation }) => {
         className="w-full text-center rounded-xl "
         style={{ backgroundColor: "#0184fb" }}
       >
-        <Text className="text-white text-lg text-center px-4 py-2">
+        <Text className="text-white custom-font  text-lg text-center px-4 py-2">
           ADD / IMPORT
         </Text>
       </TouchableHighlight>

@@ -13,7 +13,6 @@ import Bitcoin from "../../assets/svgs/bitcoin.svg";
 import usdToBtc from "../utils/BitcoinFormat";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableHighlight } from "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import BtcToUsd from "../utils/UsdFormat";
 const SendScreen = ({ route, navigation }) => {
   const { usd, btcPrice, bitcoin } = useBitcoinStore();
@@ -33,7 +32,10 @@ const SendScreen = ({ route, navigation }) => {
           >
             <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
           </Pressable>
-          <Text className="text-white text-lg w-1/2 " numberOfLines={1}>
+          <Text
+            className="text-white  custom-font  text-lg w-1/2 "
+            numberOfLines={1}
+          >
             {route.params.receiver}
           </Text>
           <Text>
@@ -49,7 +51,7 @@ const SendScreen = ({ route, navigation }) => {
                 size={24}
                 color="#16171C"
               />
-              <Text className="text-white text-4xl p-3 text-center">
+              <Text className="text-white  custom-font text-4xl p-3 text-center">
                 {currencyFormat(value)}
               </Text>
               <View className="justify-center">
@@ -79,8 +81,8 @@ const SendScreen = ({ route, navigation }) => {
               <FontAwesome6 name="truck-fast" size={20} color="#0184fb" />
             </View>
             <View>
-              <Text className="text-white">Network Fees</Text>
-              <Text className="text-white">Fast</Text>
+              <Text className="text-white  custom-font ">Network Fees</Text>
+              <Text className="text-white custom-font ">Fast</Text>
             </View>
           </View>
         </View>
@@ -90,7 +92,7 @@ const SendScreen = ({ route, navigation }) => {
         style={{ backgroundColor: "#22252E" }}
       >
         <View className="w-full">
-          <Text className="font-bold pb-5" style={{ color: "#6a707e" }}>
+          <Text className="custom-font-bold pb-5" style={{ color: "#6a707e" }}>
             Send from:{" "}
           </Text>
         </View>
@@ -103,14 +105,14 @@ const SendScreen = ({ route, navigation }) => {
               >
                 {"\u2B24"}
               </Text>
-              <Text className="font-bold text-lg text-white">
+              <Text className="custom-font-bold text-lg text-white">
                 My BTC wallet{" "}
               </Text>
             </View>
           </View>
           <View>
             <View>
-              <Text className="font-bold text-white text-lg">
+              <Text className="custom-font-bold text-white text-lg">
                 {BtcToUsd(bitcoin, btcPrice)}
                 <Feather name="chevron-right" size={20} color="#0184fb" />
               </Text>
@@ -131,7 +133,7 @@ const SendScreen = ({ route, navigation }) => {
                 }}
                 className="justify-center  items-center"
               >
-                <Text className="text-white  text-3xl">
+                <Text className="text-white  custom-font   text-3xl">
                   {item != "x" ? (
                     item
                   ) : (

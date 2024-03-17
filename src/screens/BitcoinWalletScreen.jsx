@@ -53,7 +53,9 @@ const BitcoinWalletScreen = ({ navigation }) => {
           >
             {"\u2B24"}
           </Text>
-          <Text className="font-bold text-lg text-white">My BTC wallet </Text>
+          <Text className="custom-font-bold text-lg text-white">
+            My BTC wallet{" "}
+          </Text>
         </View>
         <Text>
           <Entypo name="dots-three-vertical" size={24} color="#0184fb" />
@@ -61,12 +63,12 @@ const BitcoinWalletScreen = ({ navigation }) => {
       </View>
 
       <View className="justify-center  py-6 pb-0 ">
-        <Text className="text-4xl text-white text-center  font-bold">
+        <Text className="text-4xl text-white text-center  custom-font-bold">
           {BtcToUsd(bitcoin, btcPrice)}
         </Text>
         <View className="gap-4   items-center">
           <Text
-            className="pr-1 font-bold"
+            className="pr-1 custom-font-bold"
             style={{
               color: last_24h_change > 0 ? "#05BD88" : "#E23F2E",
             }}
@@ -98,21 +100,21 @@ const BitcoinWalletScreen = ({ navigation }) => {
             title="Send"
           >
             <Feather name="send" size={20} color="#0184fb" />
-            <Text className="text-white">Send</Text>
+            <Text className="text-white custom-font">Send</Text>
           </Pressable>
         </View>
         <View className="items-center">
           <Feather name="download" size={20} color="#0184fb" />
-          <Text className="text-white">Recive</Text>
+          <Text className="text-white custom-font">Recive</Text>
         </View>
         <View className="items-center">
           <Feather name="repeat" size={20} color="#0184fb" />
-          <Text className="text-white">Swap</Text>
+          <Text className="text-white custom-font">Swap</Text>
         </View>
       </View>
 
       <View>
-        <Text className="text-center  " style={{ color: "#0184fb" }}>
+        <Text className="text-center custom-font " style={{ color: "#0184fb" }}>
           Transactions
         </Text>
         <View
@@ -152,7 +154,9 @@ const BitcoinWalletScreen = ({ navigation }) => {
                     </View>
                   )}
                   <View className="ml-3">
-                    <Text className="text-white">{transaction.type}</Text>
+                    <Text className="text-white custom-font">
+                      {transaction.type}
+                    </Text>
                     <Text style={{ color: "#96979B" }}>
                       {format(new Date(transaction.date), "MMM d, y")}
                     </Text>

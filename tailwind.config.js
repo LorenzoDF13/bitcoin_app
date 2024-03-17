@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: [
     "./App.{js,jsx,ts,tsx}",
@@ -8,5 +9,14 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        ".custom-font-bold": {
+          fontWeight: "bold",
+        },
+        ".custom-font": {},
+      });
+    }),
+  ],
 };

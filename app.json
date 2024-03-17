@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -31,6 +29,17 @@
       "eas": {
         "projectId": "5468b2bb-b0d9-4b61-8d30-99191e21b28c"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "assets/fonts/OpenSauceOne-Regular.ttf",
+            "assets/fonts/OpenSauceOne-Bold.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }

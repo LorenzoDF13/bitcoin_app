@@ -27,7 +27,7 @@ const SelectSenderScreen = ({ navigation, route }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
         </Pressable>
-        <Text className="text-white text-lg ">Send</Text>
+        <Text className="text-white  custom-font  text-lg ">Send</Text>
         <Text>
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Text>
@@ -44,7 +44,7 @@ const SelectSenderScreen = ({ navigation, route }) => {
           cursorColor={"#0184fb"}
         ></TextInput>
         <Text
-          className=" py-2 font-bold text-md w-full "
+          className=" py-2 custom-font-bold text-md w-full "
           style={{ color: "#0184fb", textAlign: "right" }}
         >
           Who can I send to?
@@ -63,7 +63,9 @@ const SelectSenderScreen = ({ navigation, route }) => {
                   />
                 </View>
                 <View className=" text-white">
-                  <Text className="text-base text-white">Scan a QR code</Text>
+                  <Text className="text-base  custom-font  text-white">
+                    Scan a QR code
+                  </Text>
                 </View>
               </View>
               <View className=" ">
@@ -78,7 +80,9 @@ const SelectSenderScreen = ({ navigation, route }) => {
                   <AntDesign name="wallet" size={32} color="#0184fb" />
                 </View>
                 <View className=" text-white">
-                  <Text className="text-base text-white">My Wallets</Text>
+                  <Text className="text-base custom-font  text-white">
+                    My Wallets
+                  </Text>
                 </View>
               </View>
               <View className=" ">
@@ -93,7 +97,10 @@ const SelectSenderScreen = ({ navigation, route }) => {
                   <FontAwesome6 name="link" size={20} color="#103964" />
                 </View>
                 <View className=" text-white">
-                  <Text className="text-lg " style={{ color: "#989BA6" }}>
+                  <Text
+                    className="text-lg  custom-font "
+                    style={{ color: "#989BA6" }}
+                  >
                     Sharable links
                   </Text>
                 </View>
@@ -127,7 +134,10 @@ const SelectSenderScreen = ({ navigation, route }) => {
                 <Feather name="send" size={20} color="#0184fb" />
               </View>
               <View className=" text-white flex-1">
-                <Text className="text-base text-white" numberOfLines={1}>
+                <Text
+                  className="text-base  custom-font  text-white"
+                  numberOfLines={1}
+                >
                   Send to: {text}
                 </Text>
               </View>

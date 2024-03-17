@@ -36,7 +36,10 @@ const ConfirmationScreen = ({ navigation, route }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
         </Pressable>
-        <Text className="text-white text-lg w-1/2" numberOfLines={1}>
+        <Text
+          className="text-white custom-font text-lg w-1/2"
+          numberOfLines={1}
+        >
           {route.params.receiver}
         </Text>
         <Text>
@@ -46,7 +49,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
 
       <View className="pb-4 border-b border-b-white">
         <Text
-          className=" py-2 font-bold text-base w-full "
+          className=" py-2 custom-font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           Sending:
@@ -56,12 +59,12 @@ const ConfirmationScreen = ({ navigation, route }) => {
             <View className="w-4 absolute bottom-1 left-1 h-4 bg-white"></View>
             <Bitcoin width={24} height={24} />
           </View>
-          <Text className="text-white pl-3 text-base">Bitcoin</Text>
+          <Text className="text-white custom-font pl-3 text-base">Bitcoin</Text>
         </View>
       </View>
       <View className="pb-4 border-b border-b-white">
         <Text
-          className=" py-2 font-bold text-base w-full "
+          className=" py-2 custom-font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           From:
@@ -74,32 +77,37 @@ const ConfirmationScreen = ({ navigation, route }) => {
           >
             {"\u2B24"}
           </Text>
-          <Text className=" text-base text-white">My BTC wallet </Text>
+          <Text className=" custom-font text-base text-white">
+            My BTC wallet{" "}
+          </Text>
         </View>
       </View>
       <View className="pb-4 border-b border-b-white">
-        <Text className=" py-2 font-bold  w-full " style={{ color: "#6b717E" }}>
+        <Text
+          className=" py-2 custom-font-bold  w-full "
+          style={{ color: "#6b717E" }}
+        >
           BTC Network fee:
         </Text>
         <View className=" flex-row">
-          <Text className="font-bold text-base text-white">
+          <Text className="custom-font-bold text-base text-white">
             $5.23 = {usdToBtc(5.23, btcPrice, 10)}
           </Text>
         </View>
       </View>
       <View className="pb-6 border-b border-b-white">
         <Text
-          className=" py-1 pt-4 font-bold text-base w-full "
+          className=" py-1 pt-4 custom-font-bold text-base w-full "
           style={{ color: "#6b717E" }}
         >
           They will recive:
         </Text>
         <View className="">
-          <Text className="font-bold text-4xl py-1 text-white">
+          <Text className="custom-font-bold text-4xl py-1 text-white">
             {currencyFormat(route.params.amountUsd)}
           </Text>
           <Text
-            className="font-bold text-base py-1 "
+            className="custom-font-bold text-base py-1 "
             style={{ color: "#96979B" }}
           >
             {usdToBtc(route.params.amountUsd, btcPrice, 10)}
@@ -154,7 +162,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
             activeBackground={"#0184fb"}
           />
         )}
-        <Text className="w-3/4 pt-2" style={{ color: "#6B707D" }}>
+        <Text className="w-3/4 pt-2 custom-font" style={{ color: "#6B707D" }}>
           Transaction are non-reversible. Plese ensure all information is
           correct
         </Text>

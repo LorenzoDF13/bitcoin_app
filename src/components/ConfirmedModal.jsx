@@ -31,23 +31,27 @@ const ConfirmedModal = ({
           className=" w-full flex-1 items-center px-4"
           style={{ backgroundColor: "#01C48C" }}
         >
-          <Text className="text-white text-xl py-2 text-center font-bold">
+          <Text className="text-white text-xl py-2 text-center custom-font-bold">
             Payment sent!
           </Text>
           <View className="mb-12 mt-32">
             <Feather name="check-circle" size={112} color="white" />
           </View>
-          <Text className="text-white text-6xl text-center">
+          <Text className="text-white custom-font text-5xl text-center">
             {currencyFormat(amountUsd)}
           </Text>
           <View className="flex-row ">
             <Bitcoin width="24" height="24" />
-            <Text className="text-white pb-2 ml-2 text-lg font-bold">
+            <Text className="text-white pb-2 ml-2 text-lg custom-font-bold">
               {usdToBtc(amountUsd, btcPrice, 10)}
             </Text>
           </View>
-          <Text className="text-white">Your payment has been sent to</Text>
-          <Text className="text-white text-base px-4">{receiver}</Text>
+          <Text className="text-white custom-font">
+            Your payment has been sent to
+          </Text>
+          <Text className="text-white custom-font text-base px-4">
+            {receiver}
+          </Text>
           <View className="mt-auto mb-6 w-full">
             <Pressable
               className="bg-white rounded-xl p-3"
@@ -64,7 +68,7 @@ const ConfirmedModal = ({
               }}
             >
               <Text
-                className="text-center font-bold"
+                className="text-center custom-font-bold"
                 style={{ color: "#01C48C" }}
               >
                 CLOSE

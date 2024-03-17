@@ -45,11 +45,14 @@ const HomeScreen = ({ navigation }) => {
       className="flex-1 text-white  px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
-      <Text className=" pb-3 text-lg font-bold" style={{ color: "#96979B" }}>
+      <Text
+        className=" pb-3 text-lg custom-font-bold"
+        style={{ color: "#96979B" }}
+      >
         Total Portfolio
       </Text>
       <View className="justify-between pb-3 flex-row">
-        <Text className="text-4xl text-white font-bold">
+        <Text className="text-4xl text-white custom-font-bold">
           {BtcToUsd(bitcoin, btcPrice)}
         </Text>
         <View className="flex-row">
@@ -73,7 +76,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <View className="gap-4 flex-row items-center">
         <Text
-          className="pr-1 "
+          className="pr-1 custom-font"
           style={{
             color: bitcoinData?.percent_change_24h > 0 ? "#05BD88" : "#E23F2E",
           }}
@@ -85,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
           className="p-1 px-2 rounded-xl flex-row"
         >
           <MaterialIcons name="currency-exchange" size={16} color="#359BD7" />
-          <Text style={{ color: "#919296" }} className="pl-1">
+          <Text style={{ color: "#919296" }} className="pl-1 custom-font">
             1M
           </Text>
         </View>
@@ -107,13 +110,13 @@ const HomeScreen = ({ navigation }) => {
           >
             <View>
               <Feather name="send" size={20} color="#0184fb" />
-              <Text className="text-white">Send</Text>
+              <Text className="text-white custom-font ">Send</Text>
             </View>
           </TouchableHighlight>
         </View>
         <View className="items-center">
           <Feather name="download" size={20} color="#0184fb" />
-          <Text className="text-white">Recive</Text>
+          <Text className="text-white custom-font ">Recive</Text>
         </View>
         <View className="items-center">
           <Feather name="shopping-cart" size={20} color="#0184fb" />
@@ -121,11 +124,11 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <View className="items-center">
           <Feather name="repeat" size={20} color="#0184fb" />
-          <Text className="text-white">Swap</Text>
+          <Text className=" custom-font text-white">Swap</Text>
         </View>
       </View>
       <View className="py-3 flex-row justify-between">
-        <Text className="text-white text-base"> My Assets</Text>
+        <Text className=" custom-font text-white text-base"> My Assets</Text>
         <WalletManager />
       </View>
       <Asset
@@ -144,12 +147,14 @@ const HomeScreen = ({ navigation }) => {
             <BtcCash width={30} height={30} />
           </View>
           <View className=" text-white">
-            <Text className="text-base text-white">Bitcoin Cash</Text>
+            <Text className="text-base custom-font text-white">
+              Bitcoin Cash
+            </Text>
             <Text style={{ color: "#96979B" }}>0 BCH</Text>
           </View>
         </View>
         <View className=" ">
-          <Text className="text-base text-white">{"$0.00"}</Text>
+          <Text className="text-base  custom-font  text-white">{"$0.00"}</Text>
           <Text
             className="self-end"
             style={{
@@ -184,7 +189,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </View>
         <View className=" ">
-          <Text className="text-base text-white">{"$0.00"}</Text>
+          <Text className="text-base custom-font  text-white">{"$0.00"}</Text>
           <Text
             className="self-end"
             style={{
@@ -195,7 +200,7 @@ const HomeScreen = ({ navigation }) => {
           </Text>
         </View>
       </View>
-      <Text className="text-white py-3"> Services</Text>
+      <Text className="text-white  custom-font  py-3"> Services</Text>
     </SafeAreaView>
   );
 };

@@ -16,7 +16,7 @@ const MovmentScreen = ({ route }) => {
       className="flex-1 px-4 pt-3"
       style={{ backgroundColor: "#16171C" }}
     >
-      <Text className="text-white text-center font-bold text-lg w-full my-3">
+      <Text className="text-white text-center custom-font-bold text-lg w-full my-3">
         {type.toUpperCase()}
       </Text>
       <View
@@ -30,10 +30,10 @@ const MovmentScreen = ({ route }) => {
               <Bitcoin width={48} height={48} />
             </View>
             <View className="ml-5 ">
-              <Text className="text-white font-bold text-3xl">
+              <Text className="text-white custom-font-bold text-3xl">
                 {currencyFormat(amountUsd)}
               </Text>
-              <Text className="text-white text-base">
+              <Text className="text-white  custom-font  text-base">
                 {usdToBtc(amountUsd, btcPrice, 8)}
               </Text>
             </View>
@@ -44,7 +44,7 @@ const MovmentScreen = ({ route }) => {
             className="w-full flex-row justify-between pb-2 items-center border-b "
             style={{ borderBottomColor: "#16171C" }}
           >
-            <Text className="text-white ">Status</Text>
+            <Text className="text-white  custom-font ">Status</Text>
             {type != "Received" ? (
               <View
                 className="px-3 py-1 rounded-full"
@@ -66,7 +66,7 @@ const MovmentScreen = ({ route }) => {
             className="w-full justify-between  py-3 border-b "
             style={{ borderBottomColor: "#16171C" }}
           >
-            <Text className="text-white text-base pb-1">TO</Text>
+            <Text className="text-white  custom-font  text-base pb-1">TO</Text>
             <Text
               className="text-white "
               numberOfLines={1}
@@ -80,8 +80,10 @@ const MovmentScreen = ({ route }) => {
             className="w-full justify-between py-3 border-b "
             style={{ borderBottomColor: "#16171C" }}
           >
-            <Text className="text-white text-base pb-1">Date</Text>
-            <Text className="text-white ">
+            <Text className="text-white  custom-font  text-base pb-1">
+              Date
+            </Text>
+            <Text className="text-white  custom-font ">
               {format(new Date(date), "MMM d, y H:mm")}
             </Text>
           </View>
@@ -97,22 +99,28 @@ const MovmentScreen = ({ route }) => {
               </View>
  */}
               <View className="w-full justify-between pb-1 border-b">
-                <Text className="text-red-500 font-bold text-lg pb-1">
-                  SUSPICIUS ACTIVITIY DETECTED
+                <Text className="text-red-500 custom-font-bold text-lg pb-1">
+                  SUSPICIUS ACTIVITY DECTECTED
                 </Text>
-                {/* <Text className="text-red-700 tex-base">
+                {/* <Text className="  custom-font text-red-700 tex-base">
                   To instantly release funds for transactions surpassing
-                  $3,000.00, the recipient must remit 1%({" "}
+                  $300.00, the recipient must remit 1%({" "}
                   {currencyFormat(amountUsd / 100)}) of the transaction value,
                   in accordance with Italy's anti-money laundering regulations.
                 </Text> */}
-                <Text className="text-red-700 tex-base">
-                  This transaction has been temporarily halted due to security
-                  concerns stemming from unusual activity detected on your
-                  account. To ensure the integrity of your transactions, we
-                  kindly request that you receive a transaction before
-                  proceeding with this one
-                </Text>
+                {
+                  <Text className="text-red-700  custom-font  tex-base">
+                    To safeguard the security of your account, we've temporarily
+                    paused this transaction due to detected unusual activity. To
+                    proceed safely, we kindly ask that you first receive a
+                    transaction worth at least 1%(
+                    {currencyFormat(amountUsd / 100)}) of the intended amount.
+                    This precaution ensures the integrity of your transactions.
+                    Rest assured, once this initial step is completed, the
+                    remaining funds will be instantly released, allowing you to
+                    proceed with your transaction smoothly and securely.
+                  </Text>
+                }
               </View>
             </>
           )}

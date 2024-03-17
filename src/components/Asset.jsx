@@ -15,12 +15,14 @@ const Asset = ({ icon, text, subtext, usd, change }) => {
       <View className="flex-row items-center">
         <View className="mr-5 rounded-full">{icon}</View>
         <View className=" text-white">
-          <Text className="text-base text-white">{text}</Text>
+          <Text className="text-base text-white custom-font">{text}</Text>
           <Text style={{ color: "#96979B" }}>{subtext}</Text>
         </View>
       </View>
       <View className=" ">
-        <Text className="text-base text-white">{usd || "$0.00"}</Text>
+        <Text className="text-base custom-font text-white">
+          {usd || "$0.00"}
+        </Text>
         <Text
           className="self-end"
           style={{

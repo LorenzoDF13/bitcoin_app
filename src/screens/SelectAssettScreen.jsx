@@ -26,7 +26,7 @@ export default SelectAssettScreen = ({ route, navigation }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#0184fb" />
         </Pressable>
-        <Text className="text-white text-lg ">Select Asset</Text>
+        <Text className="text-white  custom-font  text-lg ">Select Asset</Text>
         <Text>
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Text>
@@ -51,7 +51,7 @@ export default SelectAssettScreen = ({ route, navigation }) => {
               <Bitcoin width={32} height={32} />
             </View>
             <View className="">
-              <Text className="text-lg text-white">BTC</Text>
+              <Text className="text-lg  custom-font  text-white">BTC</Text>
               <Text style={{ color: "#96979B" }}>Bitcoin</Text>
             </View>
           </View>
