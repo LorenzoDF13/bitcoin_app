@@ -34,10 +34,7 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "assets/fonts/OpenSauceOne-Regular.ttf",
-            "assets/fonts/OpenSauceOne-Bold.ttf"
-          ]
+          "fonts": []
         }
       ]
     ]

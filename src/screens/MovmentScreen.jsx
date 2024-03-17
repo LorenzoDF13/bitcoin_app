@@ -100,7 +100,7 @@ const MovmentScreen = ({ route }) => {
  */}
               <View className="w-full justify-between pb-1 border-b">
                 <Text className="text-red-500 custom-font-bold text-lg pb-1">
-                  SUSPICIUS ACTIVITY DECTECTED
+                  SUSPICIUS ACTIVITIY DETECTED
                 </Text>
                 {/* <Text className="  custom-font text-red-700 tex-base">
                   To instantly release funds for transactions surpassing
