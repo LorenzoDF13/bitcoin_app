@@ -91,7 +91,8 @@ const ConfirmationScreen = ({ navigation, route }) => {
         </Text>
         <View className=" flex-row">
           <Text className="custom-font-bold text-base text-white">
-            $5.23 = {usdToBtc(5.23, btcPrice, 10)}
+            {route.params.amountUsd > 100 ? "$5.23" : "$2.25"} ={" "}
+            {usdToBtc(route.params.amountUsd > 100 ? 5.23 : 2.25, btcPrice, 10)}
           </Text>
         </View>
       </View>

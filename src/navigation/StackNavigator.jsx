@@ -10,20 +10,23 @@ import SendScreen from "../screens/SendScreen";
 import BitcoinWalletScreen from "../screens/BitcoinWalletScreen";
 import MovmentScreen from "../screens/MovmentScreen";
 import ConfirmationScreen from "../screens/ConfirmationScreen";
-
+import { TransitionPresets } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        //gestureEnabled: true,
+        cardStyle: { backgroundColor: "#16171c" },
+        ...TransitionPresets.SlideFromRightIOS,
       }}
     >
       <Stack.Screen
         name="home"
         component={BottomNavigator}
-        options={{ headerShown: false, gestureDirection: "horizontal" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="selectassett"
@@ -47,8 +50,7 @@ function MyStack() {
         component={BitcoinWalletScreen}
         options={{
           headerShown: false,
-          cardStyleInterpolator:
-            CardStyleInterpolators.forRevealFromBottomAndroid,
+          cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid,
         }}
       />
       <Stack.Screen
@@ -56,8 +58,7 @@ function MyStack() {
         component={MovmentScreen}
         options={{
           headerShown: false,
-          cardStyleInterpolator:
-            CardStyleInterpolators.forRevealFromBottomAndroid,
+          ...TransitionPresets.ModalSlideFromBottomIOS,
         }}
       />
       <Stack.Screen

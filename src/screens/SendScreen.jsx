@@ -82,7 +82,7 @@ const SendScreen = ({ route, navigation }) => {
             </View>
             <View>
               <Text className="text-white  custom-font ">Network Fees</Text>
-              <Text className="text-white custom-font ">Fast</Text>
+              <Text className="text-white custom-font ">Medium</Text>
             </View>
           </View>
         </View>

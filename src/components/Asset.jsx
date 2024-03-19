@@ -27,14 +27,18 @@ const Asset = ({ icon, text, subtext, usd, change }) => {
           className="self-end"
           style={{
             color:
-              change > 0
-                ? "#05BD88"
-                : change == "0.00%"
-                ? "#96979B"
-                : "#E23F2E",
+              text == "Bitcoin"
+                ? change > 0
+                  ? "#05BD88"
+                  : "#E23F2E"
+                : "#96979B",
           }}
         >
-          {change}
+          {text == "Bitcoin"
+            ? change >= 0
+              ? "+" + change + "%"
+              : change + "%"
+            : change}
         </Text>
       </View>
     </View>

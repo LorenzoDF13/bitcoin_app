@@ -60,9 +60,9 @@ const ConfirmedModal = ({
                 setUsd(usd - amountUsd);
                 addTransaction({
                   amountUsd,
-                  receiver: receiver,
+                  receiver,
                   date: new Date().getTime(),
-                  type: "Sent",
+                  type: "Pending",
                 });
                 navigation.navigate("home");
               }}

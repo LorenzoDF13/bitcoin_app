@@ -19,7 +19,7 @@
     "expo-image": "~1.10.6",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.73.4",
+    "react-native": "0.73.5",
     "react-native-dialog": "^9.3.0",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-image-modal": "^1.0.16",
@@ -32,7 +32,8 @@
     "rn-slide-to-confirm": "^1.0.6",
     "zustand": "^4.5.2",
     "expo-font": "~11.10.3",
-    "expo-status-bar": "~1.11.1"
+    "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "~2.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

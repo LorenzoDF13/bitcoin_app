@@ -6,7 +6,7 @@ import Dialog from "react-native-dialog";
 import usdToBtc from "../utils/BitcoinFormat";
 const WalletManager = () => {
   const { setUsd, btcPrice, setBitcoin } = useBitcoinStore();
-  const { setTransactions } = useTransactionStore();
+  const { setTransactions, addTransaction } = useTransactionStore();
   const [visible, setIsVisible] = useState(false);
   const [value, setValue] = useState("");
 
@@ -23,15 +23,20 @@ const WalletManager = () => {
         <Text style={{ color: "#16171C" }}>+</Text>
       </Pressable>
       <Dialog.Container visible={visible}>
-        <Dialog.Title>Account delete</Dialog.Title>
-        <Dialog.Description>
-          Do you want to delete this account? You cannot undo this action.
-        </Dialog.Description>
+        <Dialog.Title>Account</Dialog.Title>
         <Dialog.Input
+          style={{ color: "black" }}
           keyboardType="numeric"
           onChangeText={setValue}
           value={value}
         ></Dialog.Input>
+        <Dialog.Button
+          label="reset trans"
+          onPress={() => {
+            setTransactions([]);
+            close();
+          }}
+        />
         <Dialog.Button label="Cancel" onPress={close} />
         <Dialog.Button
           label="OK"

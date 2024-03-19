@@ -5,7 +5,7 @@ import { Area, Chart, Line } from "react-native-responsive-linechart";
 const BitcoinGraph = ({ LineColor, ToColor, heigth }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch("https://api.blockchain.info/charts/market-price?timespan=1months")
+    fetch("https://api.blockchain.info/charts/market-price?timespan=1y")
       .then((response) => response.json())
       .then((data) => {
         setData(data.values);
@@ -30,12 +30,11 @@ const BitcoinGraph = ({ LineColor, ToColor, heigth }) => {
           theme={{
             gradient: {
               from: { color: LineColor },
-              to: { color: ToColor, opacity: 0.1 },
+              to: { color: ToColor, opacity: 0.01 },
             },
           }}
         />
         <Line
-          smoothing="bezier"
           theme={{
             stroke: { color: LineColor, width: 1 },
           }}
