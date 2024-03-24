@@ -27,7 +27,7 @@ const BottomNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let Icon = route.name.toLowerCase();
-          if (Icon == "founds") {
+          if (Icon == "funds") {
             Icon = "wallet";
           }
           if (Icon == "settings") {
@@ -77,7 +77,7 @@ const BottomNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Founds"
+        name="Funds"
         component={FoundsScreen}
         options={{
           headerShown: false,

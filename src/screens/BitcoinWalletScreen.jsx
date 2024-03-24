@@ -144,10 +144,10 @@ const BitcoinWalletScreen = ({ navigation }) => {
                 navigation.navigate("movment", transaction);
               }}
             >
-              <View className="flex-row justify-between border-b border-black p-2 py-3">
+              <View className="flex-row justify-between border-b border-black  py-3 px-4">
                 <View id="icon-Received" className="flex-row items-center">
                   {transaction.type == "Received" ? (
-                    <View className="text-white rounded-full ">
+                    <View className="text-white  rounded-full ">
                       <View
                         className=" justify-center items-center absolute z-10 -right-1 -top-1 rounded-full w-4 h-4 border border-white"
                         style={{ backgroundColor: "#00c58c" }}
@@ -188,7 +188,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
                 </View>
                 <View>
                   <Text
-                    className="self-end"
+                    className="self-end text-base"
                     style={{
                       color:
                         transaction.type == "Received" ? "#05BD88" : "#F19F0F",
@@ -207,7 +207,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
         })}
         <Text
           style={{ color: "gray" }}
-          className="border-b border-black  custom-font-bold text-base p-3"
+          className="border-b border-black  custom-font-bold text-base p-3 px-4"
         >
           {monthNames[new Date(1618381859 * 1000).getMonth()]}{" "}
           {new Date(1618381859 * 1000).getFullYear()}
@@ -224,7 +224,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
             });
           }}
         >
-          <View className="flex-row justify-between border-b border-black p-2 py-3">
+          <View className="flex-row justify-between border-b border-black  py-3 px-4">
             <View id="icon-Received" className="flex-row items-center">
               <View className="text-white rounded-full ">
                 <View
@@ -247,7 +247,7 @@ const BitcoinWalletScreen = ({ navigation }) => {
             </View>
             <View>
               <Text
-                className="self-end"
+                className="text-base self-end"
                 style={{
                   color: "#05BD88",
                 }}

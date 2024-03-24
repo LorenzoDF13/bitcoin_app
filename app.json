@@ -3,7 +3,6 @@
     "name": "bitcoin",
     "slug": "bitcoin",
     "version": "1.0.0",
-    "backgroundColor": "#16171C",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -18,8 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#16171C"
+        "foregroundImage": "./assets/adaptive-icon.png"
       },
       "package": "com.anonymous.bitcoin"
     },

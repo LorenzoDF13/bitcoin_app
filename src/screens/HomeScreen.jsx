@@ -51,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
         Total Portfolio
       </Text>
       <View className="justify-between items-center pb-3 flex-row px-4">
-        <Text className="text-3xl text-white custom-font-bold">
+        <Text className="text-4xl text-white custom-font-bold">
           {BtcToUsd(bitcoin, btcPrice)}
         </Text>
         <View className="flex-row items-center">

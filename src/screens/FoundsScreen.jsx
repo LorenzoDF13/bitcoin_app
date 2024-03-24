@@ -24,7 +24,7 @@ const FoundsScreen = ({ navigation }) => {
         >
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Pressable>
-        <Text className="text-white custom-font  text-lg ">Founds</Text>
+        <Text className="text-white custom-font  text-lg ">Funds</Text>
         <Text>
           <FontAwesome5 name="chevron-left" size={24} color="#16171C" />
         </Text>

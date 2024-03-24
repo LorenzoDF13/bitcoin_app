@@ -115,7 +115,7 @@ const ConfirmationScreen = ({ navigation, route }) => {
           </Text>
         </View>
       </View>
-      <View className="mt-auto  justify-center items-center ">
+      <View className="mt-auto  justify-center items-center pb-6">
         {!isLoading ? (
           <SlideToConfirm
             unconfimredTipText={"SLIDE TO SEND"}
@@ -140,8 +140,8 @@ const ConfirmationScreen = ({ navigation, route }) => {
               </View>
             }
             onSlideConfirmed={() => {
-              setSliderState(true);
               setIsLoading(true);
+
               setTimeout(() => {
                 setIsLoading(false);
                 setIsVisible(true);

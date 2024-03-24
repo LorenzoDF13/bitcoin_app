@@ -125,10 +125,10 @@ const SelectSenderScreen = ({ navigation, route }) => {
         </>
       ) : (
         <TouchableNativeFeedback
-          className="rounded-full"
+          className="rounded-full "
           onPress={() => navigation.navigate("send", { receiver: text })}
         >
-          <View className="rounded-xl p-2 px-5 justify-between items-center flex-row w-full mb-3">
+          <View className="rounded-xl p-4 px-5 justify-between items-center flex-row w-full mb-3">
             <View className="flex-row items-center">
               <View className="mr-5">
                 <Feather name="send" size={20} color="#0184fb" />
